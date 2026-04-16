@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Fidelity Wireframe - Luxury Sports Performance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #ffffff;
+            color: #2c3e50;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #0a2540 100%);
+            padding: 80px 20px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 30%, rgba(255, 255, 255, 0.03) 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.03) 30%, rgba(255, 255, 255, 0.03) 70%, transparent 70%);
+            background-size: 60px 60px;
+            opacity: 0.5;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        
+        .logo-accent {
+            color: #ff6b35;
+        }
+        
+        .headline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 64px;
+            font-weight: 900;
+            margin: 20px 0;
+            color: #ffffff;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .headline-accent {
+            color: #ff6b35;
+            display: block;
+        }
+        
+        .subheadline {
+            font-size: 24px;
+            font-weight: 300;
+            color: #e8f1f8;
+            margin: 30px auto;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: #ffffff;
+            border: none;
+            margin-top: 40px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0a2540;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title-accent {
+            color: #ff6b35;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            text-align: center;
+            color: #5a6c7d;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Stakes Section */
+        .stakes-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+        
+        .stakes-item {
+            text-align: center;
+            margin: 40px auto;
+            padding: 50px 40px;
+            max-width: 900px;
+            background: #ffffff;
+            border-left: 5px solid #ff6b35;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            border-radius: 4px;
+        }
+        
+        .stakes-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0a2540;
+            line-height: 1.3;
+        }
+        
+        .stakes-item p {
+            font-size: 18px;
+            color: #5a6c7d;
+            line-height: 1.8;
+        }
+        
+        /* Value Proposition */
+        .value-prop-section {
+            background: #ffffff;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 50px 35px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35 0%, #ff8c42 100%);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-color: #ff6b35;
+        }
+        
+        .benefit-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 10px 30px rgba(10, 37, 64, 0.2);
+        }
+        
+        .benefit-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0a2540;
+        }
+        
+        .benefit-card p {
+            font-size: 16px;
+            color: #5a6c7d;
+            line-height: 1.8;
+        }
+        
+        /* Guide Section */
+        .guide-section {
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .guide-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0.02) 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0.02) 70%, transparent 70%);
+            background-size: 60px 60px;
+        }
+        
+        .guide-section .section-title {
+            color: #ffffff;
+        }
+        
+        .guide-section .section-subtitle {
+            color: #b8c9d9;
+        }
+        
+        .empathy-statement {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 300;
+            font-style: italic;
+            color: #e8f1f8;
+            max-width: 900px;
+            margin: 0 auto 70px;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 5px solid #ff6b35;
+            border-radius: 4px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.8;
+        }
+        
+        .authority-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .authority-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .authority-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #ff6b35;
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 56px;
+            font-weight: 900;
+            color: #ff6b35;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: #b8c9d9;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            background: #ffffff;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .pricing-card {
+            background: #ffffff;
+            border: 2px solid #e9ecef;
+            padding: 50px 40px;
+            text-align: center;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .pricing-card.featured {
+            border-color: #ff6b35;
+            border-width: 3px;
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ffffff 0%, #fff9f7 100%);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.15);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: #ffffff;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .tier-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0a2540;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .price {
+            font-size: 20px;
+            font-weight: 600;
+            color: #5a6c7d;
+            margin: 25px 0 35px;
+            font-style: italic;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 30px 0;
+            padding: 0;
+            text-align: left;
+        }
+        
+        .features-list li {
+            padding: 15px 0;
+            font-size: 15px;
+            color: #5a6c7d;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-card .cta-button {
+            margin-top: 30px;
+            width: 100%;
+        }
+        
+        /* Plan Section */
+        .plan-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .process-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 70px;
+            color: #0a2540;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .step-card {
+            text-align: center;
+            padding: 50px 40px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .step-number {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            font-weight: 900;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+        
+        .step-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0a2540;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .step-description {
+            font-size: 16px;
+            color: #5a6c7d;
+            line-height: 1.8;
+        }
+        
+        /* Explanatory Section */
+        .explanatory-section {
+            background: #ffffff;
+        }
+        
+        .explanatory-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .explanatory-text {
+            font-size: 20px;
+            line-height: 1.9;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .read-more-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            background: #f8f9fa;
+            color: #0a2540;
+            border: 2px solid #e9ecef;
+            cursor: pointer;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .read-more-btn:hover {
+            background: #0a2540;
+            color: #ffffff;
+            border-color: #0a2540;
+        }
+        
+        .objection-items {
+            margin-top: 60px;
+        }
+        
+        .objection-item {
+            margin-bottom: 35px;
+            padding: 35px 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-left: 5px solid #ff6b35;
+            border-radius: 4px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+        
+        .objection-item h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #0a2540;
+        }
+        
+        .objection-item p {
+            font-size: 16px;
+            color: #5a6c7d;
+            line-height: 1.8;
+        }
+        
+        /* Lead Generator Section */
+        .lead-gen-section {
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lead-gen-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0.02) 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0.02) 70%, transparent 70%);
+            background-size: 60px 60px;
+        }
+        
+        .lead-gen-section .section-title {
+            color: #ffffff;
+        }
+        
+        .lead-gen-section .section-subtitle {
+            color: #b8c9d9;
+        }
+        
+        .lead-gen-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .lead-gen-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lead-gen-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+        }
+        
+        .pdf-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .pdf-title {
+            text-align: center;
+            padding: 0 30px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.3;
+        }
+        
+        .lead-gen-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 45px;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0a2540;
+        }
+        
+        .form-description {
+            font-size: 16px;
+            color: #5a6c7d;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0a2540;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #e9ecef;
+            background: #ffffff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #ff6b35;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Video Section */
+        .video-section {
+            background: #ffffff;
+        }
+        
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .video-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #0a2540;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 560px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560"><rect fill="%232c3e50" width="1000" height="560"/><text x="50%" y="45%" text-anchor="middle" fill="rgba(255,255,255,0.1)" font-size="24" font-family="Arial">Athlete Training Footage</text></svg>');
+            background-size: cover;
+        }
+        
+        .play-button {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 107, 53, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            background: rgba(255, 107, 53, 1);
+        }
+        
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-left: 30px solid #ffffff;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            margin-left: 10px;
+        }
+        
+        .video-caption {
+            position: relative;
+            z-index: 1;
+            margin-top: 30px;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #0a2540;
+            color: #b8c9d9;
+            padding: 70px 20px 40px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .footer-description {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #b8c9d9;
+        }
+        
+        .footer-column h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-link {
+            color: #b8c9d9;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #ff6b35;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+        }
+        
+        .footer-copyright {
+            font-size: 13px;
+            color: #7a8c9e;
+        }
+        
+        .footer-social {
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            margin: 0 8px;
+            text-align: center;
+            line-height: 40px;
+            color: #b8c9d9;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-icon:hover {
+            background: #ff6b35;
+            color: #ffffff;
+            border-color: #ff6b35;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Section 1: Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                ELITE <span class="logo-accent">PERFORMANCE</span>
+            </div>
+            
+            <h1 class="headline">
+                UNLEASH YOUR
+                <span class="headline-accent">ATHLETIC DOMINANCE</span>
+            </h1>
+            
+            <p class="subheadline">
+                Elite performance training designed to transform good athletes into champions
+            </p>
+            
+            <button class="cta-button">Book Your Assessment</button>
+        </div>
+    </header>
+    
+    <!-- Section 2: Stakes -->
+    <section class="section stakes-section">
+        <div class="container">
+            <div class="stakes-item">
+                <h3>Generic training programs won't unlock elite performance</h3>
+                <p>You're training hard but not seeing breakthrough results that match your dedication. Your competitors are getting stronger, faster, and more explosive—while you're stuck on a plateau.</p>
+            </div>
+            
+            <div class="stakes-item">
+                <h3>Don't let average training hold you back from extraordinary results</h3>
+                <p>Watching competitors pass you by is frustrating. You deserve to perform at your peak. Every day without proper training is a missed opportunity to gain the competitive advantage you need.</p>
+            </div>
+            
+            <div class="stakes-item">
+                <h3>You were engineered for athletic excellence</h3>
+                <p>Your athletic potential shouldn't be limited by outdated training methods. You were built for greatness, and it's time to unlock the champion within.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section 3: Value Proposition -->
+    <section class="section value-prop-section">
+        <div class="container">
+            <h2 class="section-title">
+                Transform Your <span class="section-title-accent">Performance</span>
+            </h2>
+            <p class="section-subtitle">Science-backed training methods that deliver measurable results</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Biomechanically Optimized Training</h3>
+                    <p>Our data-driven approach uses cutting-edge sports science to identify and eliminate your performance limiters, giving you a measurable competitive edge.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">👤</div>
+                    <h3>1-on-1 Expert Guidance</h3>
+                    <p>Work directly with certified performance specialists who have trained professional athletes. Every session is customized to your sport, position, and goals.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Accelerated Athletic Gains</h3>
+                    <p>See measurable improvements in speed, power, and agility within 4-6 weeks. Our clients average 15-20% performance increases in their first 90 days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section 4: Guide -->
+    <section class="section guide-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-subtitle">Proven expertise meets personalized care</p>
+            
+            <div class="empathy-statement">
+                "We know what it's like to train harder than everyone else and still feel like you're not reaching your potential. That's exactly why we created this program."
+            </div>
+            
+            <div class="authority-grid">
+                <div class="authority-card">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-label">Athletes Trained to Elite Levels</div>
+                </div>
+                
+                <div class="authority-card">
+                    <div class="stat-number">47</div>
+                    <div class="stat-label">Athletes Advanced to Pro & College Programs</div>
+                </div>
+                
+                <div class="authority-card">
+                    <div class="stat-number">18%</div>
+                    <div class="stat-label">Average Improvement in Performance</div>
+                </div>
+                
+                <div class="authority-card">
+                    <div class="stat-number">Top-Tier</div>
+                    <div class="stat-label">Trusted by Coaches Nationwide</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section 5: Pricing -->
+    <section class="section pricing-section">
+        <div class="container">
+            <h2 class="section-title">
+                Choose Your <span class="section-title-accent">Path</span>
+            </h2>
+            <p class="section-subtitle">Select the program that matches your commitment level</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="tier-name">Foundation</h3>
+                    <div class="price">Athletic Development</div>
+                    <ul class="features-list">
+                        <li>Foundational movement screening</li>
+                        <li>Group training sessions</li>
+                        <li>8 sessions per month</li>
+                        <li>General athletic development</li>
+                        <li>Bi-annual testing</li>
+                    </ul>
+                    <button class="cta-button">Get Started</button>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3 class="tier-name">Pro</h3>
+                    <div class="price">Competitive Edge</div>
+                    <ul class="features-list">
+                        <li>Initial performance evaluation</li>
+                        <li>Small group training (max 4)</li>
+                        <li>12 sessions per month</li>
+                        <li>Sport-specific programming</li>
+                        <li>Quarterly assessments</li>
+                    </ul>
+                    <button class="cta-button">Get Started</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3 class="tier-name">Elite</h3>
+                    <div class="price">Peak Performance</div>
+                    <ul class="features-list">
+                        <li>Comprehensive biomechanical assessment</li>
+                        <li>1-on-1 individualized training</li>
+                        <li>Unlimited facility access</li>
+                        <li>Nutrition & recovery optimization</li>
+                        <li>Monthly performance tracking</li>
+                    </ul>
+                    <button class="cta-button">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section 6: The Plan -->
+    <section class="section plan-section">
+        <div class="container">
+            <h2 class="section-title">
+                Your Path to <span class="section-title-accent">Peak Performance</span>
+            </h2>
+            <p class="section-subtitle">Getting started is simple and strategic</p>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Assess</h3>
+                    <p class="step-description">We analyze your movement patterns, strength metrics, and sport-specific abilities to create your personalized baseline and identify opportunity areas.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Accelerate</h3>
+                    <p class="step-description">Train with elite coaches using your scientifically-designed program. Every session builds toward your performance goals with measurable progress tracking.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Achieve</h3>
+                    <p class="step-description">Experience breakthrough performance gains and competitive advantages that separate you from the pack. Watch your hard work translate into results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section 7: Explanatory Paragraph -->
+    <section class="section explanatory-section">
+        <div class="container">
+            <h2 class="section-title">
+                Why Elite Performance <span class="section-title-accent">Training Matters</span>
+            </h2>
+            
+            <div class="explanatory-content">
+                <p class="explanatory-text">
+                    Stop settling for generic training programs that treat every athlete the same. At Elite Performance, we combine sports science, personalized coaching, and proven methodologies to unlock the athletic potential already inside you. Whether you're preparing for the next level, recovering from injury, or looking to gain that competitive edge, our elite performance specialists create individualized programs designed specifically for your sport, position, and goals.
+                </p>
+                
+                <button class="read-more-btn">Read More About Our Approach</button>
+                
+                <div class="objection-items">
+                    <div class="objection-item">
+                        <h4>"I already have a trainer/coach."</h4>
+                        <p>That's great—we complement your existing coaching by focusing specifically on the biomechanical and performance aspects that most sport coaches don't have time to address. Many of our clients are referred by their head coaches who want their athletes to have that extra edge.</p>
+                    </div>
+                    
+                    <div class="objection-item">
+                        <h4>"This seems expensive for training."</h4>
+                        <p>When you consider the investment families make in club sports, travel teams, and showcases, optimizing your actual athletic performance is the most impactful investment you can make. We've helped athletes earn scholarships worth hundreds of thousands of dollars by improving their measurable performance metrics.</p>
+                    </div>
+                    
+                    <div class="objection-item">
+                        <h4>"I don't know if I'm athletic enough for this type of training."</h4>
+                        <p>Our programs are designed for athletes at every level—from youth development to professional preparation. We meet you where you are and build from there. Some of our biggest success stories started with athletes who didn't think they were 'elite material.'</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section 8: Lead Generator -->
+    <section class="section lead-gen-section">
+        <div class="container">
+            <h2 class="section-title">Free Performance Guide</h2>
+            <p class="section-subtitle">Unlock pro-level training secrets</p>
+            
+            <div class="lead-gen-container">
+                <div class="lead-gen-image">
+                    <div class="pdf-icon">📄</div>
+                    <div class="pdf-title">
+                        The Elite Athlete's<br>Performance Playbook
+                    </div>
+                </div>
+                
+                <div class="lead-gen-form">
+                    <h3 class="form-title">Download Your Free Playbook</h3>
+                    <p class="form-description">
+                        Discover the 7 training principles that separate good athletes from great ones—and the science-backed methods pro trainers use to maximize speed, power, and explosiveness.
+                    </p>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Primary Sport</label>
+                        <input type="text" class="form-input" placeholder="e.g., Basketball, Soccer, Football">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Current Level</label>
+                        <input type="text" class="form-input" placeholder="Youth / High School / College / Pro">
+                    </div>
+                    
+                    <button class="submit-button">Download Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section 9: Video -->
+    <section class="section video-section">
+        <div class="container">
+            <div class="video-container">
+                <h2 class="video-title">See How We Transform Athletes in 90 Days</h2>
+                
+                <div class="video-placeholder">
+                    <div class="play-button">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-caption">Watch real transformation stories</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand">ELITE PERFORMANCE</div>
+                    <p class="footer-description">
+                        Transforming athletes through science-backed training, personalized coaching, and proven methodologies. Unlock your full athletic potential.
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Programs</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Foundation</a></li>
+                        <li><a href="#" class="footer-link">Pro Training</a></li>
+                        <li><a href="#" class="footer-link">Elite Level</a></li>
+                        <li><a href="#" class="footer-link">Youth Development</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Our Coaches</a></li>
+                        <li><a href="#" class="footer-link">Success Stories</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Free Guides</a></li>
+                        <li><a href="#" class="footer-link">FAQs</a></li>
+                        <li><a href="#" class="footer-link">Book Assessment</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-social">
+                    <span class="social-icon">f</span>
+                    <span class="social-icon">in</span>
+                    <span class="social-icon">yt</span>
+                    <span class="social-icon">ig</span>
+                </div>
+                <div class="footer-copyright">
+                    © 2024 Elite Performance Training. All rights reserved. | Privacy Policy | Terms of Service
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

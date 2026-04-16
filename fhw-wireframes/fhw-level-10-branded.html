@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 10 Branded Wireframe - Functional Health Warrior</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #ffffff;
+            color: #2c3e50;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* BRAND COLORS */
+        /* Primary Dark Green: #204622 */
+        /* Sage Green: #91bb99 */
+        /* Medium Green: #41664c */
+        /* White: #ffffff */
+
+        /* LEVEL 10 FEATURE: Sticky CTA Bar */
+        .sticky-cta-bar {
+            position: fixed;
+            top: -100px;
+            left: 0;
+            right: 0;
+            background: rgba(32, 70, 34, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            z-index: 1000;
+            transition: top 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #91bb99;
+        }
+
+        .sticky-cta-bar.visible {
+            top: 0;
+        }
+
+        .sticky-cta-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sticky-cta-text {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .sticky-cta-button {
+            padding: 12px 35px;
+            background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            color: #204622;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(145, 187, 153, 0.4);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .sticky-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(145, 187, 153, 0.5);
+            background: linear-gradient(135deg, #a8cbb0 0%, #91bb99 100%);
+        }
+
+        /* LEVEL 10 FEATURE: Social Proof Notification */
+        .social-proof-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #ffffff;
+            padding: 20px 25px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            z-index: 900;
+            max-width: 380px;
+            border-left: 4px solid #91bb99;
+            animation: slideInLeft 0.5s ease;
+            display: none;
+        }
+
+        .social-proof-notification.active {
+            display: block;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .social-proof-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social-proof-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #204622 0%, #41664c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 20px;
+            overflow: hidden;
+        }
+
+        .social-proof-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .social-proof-text {
+            flex: 1;
+        }
+
+        .social-proof-name {
+            font-weight: 700;
+            color: #204622;
+            margin-bottom: 3px;
+        }
+
+        .social-proof-action {
+            font-size: 14px;
+            color: #41664c;
+        }
+
+        .social-proof-time {
+            font-size: 12px;
+            color: #999;
+            margin-top: 3px;
+        }
+
+        /* LEVEL 10 FEATURE: Hero with Image Background */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #204622 0%, #41664c 50%, #204622 100%);
+        }
+
+        .hero-background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-background-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            opacity: 1;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(32, 70, 34, 0.65) 0%, rgba(65, 102, 76, 0.55) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Top Navigation Bar */
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            max-width: 140px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #91bb99;
+        }
+
+        .nav-cta {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            color: #204622;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(145, 187, 153, 0.4);
+        }
+
+        /* LEVEL 10 FEATURE: Scroll-Triggered Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(145, 187, 153, 0.6),
+                             0 0 40px rgba(145, 187, 153, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(145, 187, 153, 0.8),
+                             0 0 60px rgba(145, 187, 153, 0.6);
+            }
+        }
+
+        .hero-headline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 72px;
+            font-weight: 400;
+            margin: 30px 0;
+            color: #ffffff;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-headline-accent {
+            color: #91bb99;
+            display: block;
+            font-size: 80px;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        .hero-subheadline {
+            font-size: 24px;
+            font-weight: 300;
+            color: #e8f1e9;
+            margin: 40px auto;
+            max-width: 750px;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        /* LEVEL 10 FEATURE: Micro-Interactions */
+        .hero-cta-container {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .hero-cta-primary {
+            padding: 22px 55px;
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            color: #204622;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 12px 35px rgba(145, 187, 153, 0.4);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .hero-cta-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .hero-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 45px rgba(145, 187, 153, 0.5);
+        }
+
+        .hero-cta-secondary {
+            padding: 22px 55px;
+            font-size: 18px;
+            font-weight: 700;
+            background: transparent;
+            color: #ffffff;
+            border: 3px solid #ffffff;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .hero-cta-secondary:hover {
+            background: #ffffff;
+            color: #204622;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        /* LEVEL 10 FEATURE: Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s infinite;
+            text-align: center;
+        }
+
+        .scroll-indicator-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .scroll-arrow {
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .scroll-arrow::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #91bb99;
+            border-radius: 50%;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollDot 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes scrollDot {
+            0% { top: 10px; opacity: 1; }
+            50% { top: 25px; opacity: 0.5; }
+            100% { top: 10px; opacity: 1; }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #204622;
+        }
+
+        .section-title-accent {
+            color: #41664c;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            text-align: center;
+            color: #41664c;
+            margin-bottom: 70px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* LEVEL 10 FEATURE: Parallax Background */
+        .stakes-section {
+            background: linear-gradient(135deg, #f8faf8 0%, #e9f0ea 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parallax-background {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 120%;
+            background:
+                linear-gradient(135deg, rgba(145, 187, 153, 0.03) 0%, transparent 50%),
+                url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(32,70,34,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            z-index: 0;
+        }
+
+        .stakes-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stakes-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #204622;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .stakes-body {
+            font-size: 18px;
+            line-height: 2;
+            color: #2c3e50;
+            background: #ffffff;
+            padding: 60px;
+            border-left: 5px solid #91bb99;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+
+        .stakes-body p {
+            margin-bottom: 24px;
+        }
+
+        .stakes-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Value Proposition with Glass-morphism */
+        .value-prop-section {
+            background: #ffffff;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 70px;
+        }
+
+        /* LEVEL 10 FEATURE: Glass-morphism Cards with Images */
+        .benefit-card {
+            text-align: center;
+            padding: 0;
+            background: linear-gradient(135deg, rgba(248, 250, 248, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border: 1px solid rgba(145, 187, 153, 0.3);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #91bb99 0%, #a8cbb0 100%);
+        }
+
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(145, 187, 153, 0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(32, 70, 34, 0.15);
+        }
+
+        .benefit-card:hover::after {
+            opacity: 1;
+        }
+
+        .benefit-card-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .benefit-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.4s ease;
+        }
+
+        /* Specific image positioning for each card */
+        .benefit-card:nth-child(1) .benefit-card-image img {
+            object-position: center 22%;
+        }
+
+        .benefit-card:nth-child(2) .benefit-card-image img {
+            object-position: center 52%;
+        }
+
+        .benefit-card:nth-child(3) .benefit-card-image img {
+            object-position: center 20%;
+        }
+
+        .benefit-card:nth-child(4) .benefit-card-image img {
+            object-position: center 42%;
+        }
+
+        .benefit-card:hover .benefit-card-image img {
+            transform: scale(1.05);
+        }
+
+        .benefit-card-content {
+            padding: 35px 40px 45px;
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            margin: -60px auto 25px;
+            background: linear-gradient(135deg, #204622 0%, #41664c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            box-shadow: 0 10px 30px rgba(32, 70, 34, 0.25);
+            position: relative;
+            z-index: 1;
+            border: 4px solid #ffffff;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #204622;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-card p {
+            font-size: 15px;
+            color: #41664c;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Guide Section */
+        .guide-section {
+            background: linear-gradient(135deg, #204622 0%, #41664c 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0.02) 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0.02) 70%, transparent 70%);
+            background-size: 60px 60px;
+        }
+
+        .guide-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .guide-image {
+            position: sticky;
+            top: 120px;
+        }
+
+        .guide-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .guide-text-content {
+            padding-top: 20px;
+        }
+
+        .guide-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        .empathy-statement {
+            font-size: 18px;
+            line-height: 2;
+            color: #e8f1e9;
+            margin-bottom: 50px;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 5px solid #91bb99;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .empathy-statement p {
+            margin-bottom: 24px;
+        }
+
+        .empathy-statement p:last-child {
+            margin-bottom: 0;
+        }
+
+        .authority-list {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .authority-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #91bb99;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .authority-item {
+            padding: 15px 0;
+            font-size: 16px;
+            color: #b8d4bc;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            padding-left: 35px;
+            transition: all 0.3s ease;
+        }
+
+        .authority-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #91bb99;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .authority-item:hover {
+            color: #ffffff;
+            padding-left: 40px;
+        }
+
+        .authority-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            background: linear-gradient(135deg, #f8faf8 0%, #e9f0ea 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .testimonial-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(32, 70, 34, 0.2);
+        }
+
+        .testimonial-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .testimonial-content {
+            padding: 20px;
+        }
+
+        .testimonial-quote {
+            font-size: 24px;
+            font-weight: 600;
+            color: #204622;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 60px;
+            color: #91bb99;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #91bb99;
+        }
+
+        .testimonial-author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #204622;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-author-info p {
+            font-size: 14px;
+            color: #41664c;
+        }
+
+        .testimonial-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(32, 70, 34, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: #204622;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #41664c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background: #ffffff;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            margin-top: 70px;
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            background: #ffffff;
+            border: 2px solid #e9f0ea;
+            padding: 55px 45px;
+            text-align: center;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(32, 70, 34, 0.12);
+        }
+
+        .pricing-card.featured {
+            border-color: #91bb99;
+            border-width: 3px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8faf8 100%);
+            box-shadow: 0 25px 60px rgba(145, 187, 153, 0.2);
+            transform: scale(1.02);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.02) translateY(-8px);
+        }
+
+        .pricing-card.featured::before {
+            content: 'RECOMMENDED';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            color: #204622;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 5px 20px rgba(145, 187, 153, 0.3);
+        }
+
+        .tier-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #204622;
+        }
+
+        .tier-description {
+            font-size: 16px;
+            color: #41664c;
+            margin-bottom: 30px;
+            line-height: 1.9;
+        }
+
+        .tier-best-for {
+            font-size: 15px;
+            font-weight: 600;
+            color: #91bb99;
+            margin-bottom: 35px;
+            font-style: italic;
+        }
+
+        .pricing-card .cta-button {
+            margin-top: 10px;
+        }
+
+        .pricing-note {
+            text-align: center;
+            font-size: 17px;
+            color: #41664c;
+            margin-top: 60px;
+            font-style: italic;
+            padding: 25px 40px;
+            background: #f8faf8;
+            border-radius: 8px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Plan Section */
+        .plan-section {
+            background: linear-gradient(135deg, #f8faf8 0%, #e9f0ea 100%);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            margin-top: 70px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 55px 40px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(32, 70, 34, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(32, 70, 34, 0.15);
+        }
+
+        .step-number {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 35px;
+            background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            color: #204622;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 44px;
+            font-weight: 900;
+            box-shadow: 0 15px 40px rgba(145, 187, 153, 0.35);
+            position: relative;
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            border: 2px dashed rgba(145, 187, 153, 0.3);
+            border-radius: 50%;
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .step-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #204622;
+        }
+
+        .step-description {
+            font-size: 16px;
+            color: #41664c;
+            line-height: 1.9;
+        }
+
+        /* Explanatory Section */
+        .explanatory-section {
+            background: #ffffff;
+        }
+
+        .explanatory-content {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .explanatory-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 46px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #204622;
+        }
+
+        .explanatory-text {
+            font-size: 19px;
+            line-height: 2;
+            color: #2c3e50;
+            margin-bottom: 50px;
+        }
+
+        .explanatory-text p {
+            margin-bottom: 24px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 22px 55px;
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            color: #204622;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 12px 35px rgba(145, 187, 153, 0.4);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 45px rgba(145, 187, 153, 0.5);
+        }
+
+        /* Lead Generator Section */
+        .lead-gen-section {
+            background: linear-gradient(135deg, #204622 0%, #41664c 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lead-gen-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0.02) 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0.02) 70%, transparent 70%);
+            background-size: 60px 60px;
+        }
+
+        .lead-gen-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1150px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lead-gen-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #204622;
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 50px;
+            line-height: 1.4;
+        }
+
+        .lead-gen-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+
+        .checklist-icon {
+            font-size: 90px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .checklist-title {
+            position: relative;
+            z-index: 1;
+        }
+
+        .lead-gen-form {
+            background: rgba(255, 255, 255, 0.97);
+            padding: 55px 50px;
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #204622;
+            line-height: 1.3;
+        }
+
+        .form-description {
+            font-size: 17px;
+            color: #41664c;
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #204622;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 18px;
+            font-size: 16px;
+            border: 2px solid #e9f0ea;
+            background: #ffffff;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #91bb99;
+            box-shadow: 0 0 0 4px rgba(145, 187, 153, 0.1);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            color: #204622;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            border-radius: 6px;
+            box-shadow: 0 12px 35px rgba(145, 187, 153, 0.35);
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .submit-button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 45px rgba(145, 187, 153, 0.45);
+        }
+
+        /* Video Section */
+        .video-section {
+            background: #ffffff;
+        }
+
+        .video-container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .video-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #204622;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 590px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .video-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
+            opacity: 0.85;
+            background: #1a1a1a;
+        }
+
+        .play-button {
+            width: 130px;
+            height: 130px;
+            background: rgba(145, 187, 153, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 50px rgba(145, 187, 153, 0.45);
+            transition: all 0.4s ease;
+        }
+
+        .play-button::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            border: 2px solid rgba(145, 187, 153, 0.3);
+            border-radius: 50%;
+            animation: playPulse 2s ease-out infinite;
+        }
+
+        @keyframes playPulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            background: rgba(145, 187, 153, 1);
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-left: 35px solid #204622;
+            border-top: 22px solid transparent;
+            border-bottom: 22px solid transparent;
+            margin-left: 12px;
+        }
+
+        .video-caption {
+            position: relative;
+            z-index: 1;
+            margin-top: 35px;
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: #204622;
+            color: #b8d4bc;
+            padding: 80px 20px 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand {
+            margin-bottom: 25px;
+        }
+
+        .footer-brand img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .footer-description {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #b8d4bc;
+        }
+
+        .footer-column h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 14px;
+        }
+
+        .footer-link {
+            color: #b8d4bc;
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #91bb99;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 35px;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: #7a9c7e;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .guide-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-image {
+                position: static;
+                max-width: 400px;
+                margin: 0 auto 40px;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-logo img {
+                max-width: 100px;
+            }
+
+            .hero-headline {
+                font-size: 42px;
+            }
+
+            .hero-headline-accent {
+                font-size: 46px;
+            }
+
+            .hero-subheadline {
+                font-size: 18px;
+            }
+
+            .hero-cta-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-cta-primary,
+            .hero-cta-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .benefits-grid,
+            .pricing-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lead-gen-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .stakes-headline {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- LEVEL 10 FEATURE: Sticky CTA Bar -->
+    <div class="sticky-cta-bar" id="stickyCta">
+        <div class="sticky-cta-content">
+            <span class="sticky-cta-text">Ready to find what everyone else missed?</span>
+            <button class="sticky-cta-button">See How It Works</button>
+        </div>
+    </div>
+
+    <!-- LEVEL 10 FEATURE: Social Proof Notification -->
+    <div class="social-proof-notification" id="socialProof">
+        <div class="social-proof-content">
+            <div class="social-proof-avatar">
+                <img src="fhw creative/582117153_18541397230059885_3029920338913482829_n.jpg" alt="DJ">
+            </div>
+            <div class="social-proof-text">
+                <div class="social-proof-name">DJ Jacobucci</div>
+                <div class="social-proof-action">"Down 30 lbs, sleeping better, leaner than my 20s"</div>
+                <div class="social-proof-time">FHW Client</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 1: Hero -->
+    <section class="hero-section">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="nav-logo">
+                <img src="fhw creative/fhw logo - no background.png" alt="Functional Health Warrior">
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Services</a>
+                <a href="#" class="nav-link">Resources</a>
+                <a href="#" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+
+        <div class="hero-background-image">
+            <img src="fhw creative/IMG_4292.jpg" alt="Kelly at gym">
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-headline">
+                Your Labs Say You're Fine.
+                <span class="hero-headline-accent">Your Body Says Otherwise.</span>
+            </h1>
+
+            <p class="hero-subheadline">
+                Comprehensive testing that finds what everyone else missed — so you can finally feel like yourself again
+            </p>
+
+            <div class="hero-cta-container">
+                <button class="hero-cta-primary">See How It Works</button>
+                <button class="hero-cta-secondary">Get Free Checklist</button>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-indicator-text">Scroll to Learn More</div>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Section 2: Stakes -->
+    <section class="section stakes-section">
+        <div class="parallax-background"></div>
+        <div class="container">
+            <div class="stakes-content">
+                <h2 class="stakes-headline">You're Not Crazy. You're Not a Hypochondriac. And You're Definitely Not "Fine."</h2>
+
+                <div class="stakes-body">
+                    <p>You've done the appointments. The referrals. The waiting rooms. You've explained your symptoms to doctor after doctor, only to hear the same thing: "Your labs look normal."</p>
+
+                    <p>But normal according to who? A general population that's exhausted, overweight, and running on fumes?</p>
+
+                    <p>Meanwhile, you can't keep up with your own life. You're dragging through workdays, short with your kids, and wondering when you started feeling 80 in a 40-year-old body. The brain fog alone makes you feel like your IQ got cut in half.</p>
+
+                    <p>Something is wrong. You know it. And you're tired of being told it's all in your head.</p>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="#" class="cta-button">See How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Value Proposition -->
+    <section class="section value-prop-section">
+        <div class="container">
+            <h2 class="section-title">
+                What Changes When Someone Finally <span class="section-title-accent">Finds the Root Cause</span>
+            </h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-card-image">
+                        <img src="fhw creative/572949924_18537244723059885_768011778359276494_n.jpg" alt="Energy and vitality">
+                    </div>
+                    <div class="benefit-card-content">
+                        <div class="benefit-icon">&#9889;</div>
+                        <h3>Energy That Actually Lasts</h3>
+                        <p>No more afternoon crashes. No more "pushing through." Wake up rested and carry that energy into evening — with something left for the people you love.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-card-image">
+                        <img src="fhw creative/IMG_4521 (1).JPG" alt="Mental clarity">
+                    </div>
+                    <div class="benefit-card-content">
+                        <div class="benefit-icon">&#129504;</div>
+                        <h3>Your Brain Back Online</h3>
+                        <p>Walk into meetings sharp. Remember why you walked into the room. Think clearly enough to feel like the competent person you actually are.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-card-image">
+                        <img src="fhw creative/501610217_18507683887059885_2678255865208260669_n.jpg" alt="Body transformation">
+                    </div>
+                    <div class="benefit-card-content">
+                        <div class="benefit-icon">&#128170;</div>
+                        <h3>A Body That Responds to Your Effort</h3>
+                        <p>When you work out, you see results. When you eat well, you feel good. Your body starts working WITH you again instead of against you.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-card-image">
+                        <img src="fhw creative/514053220_18513905473059885_1469161226648052402_n.jpg" alt="Family time">
+                    </div>
+                    <div class="benefit-card-content">
+                        <div class="benefit-icon">&#10084;</div>
+                        <h3>Being Present for the People Who Matter</h3>
+                        <p>Patient with your kids. Engaged with your partner. Actually enjoying your life instead of just surviving it.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#" class="cta-button">See How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Guide -->
+    <section class="section guide-section">
+        <div class="container">
+            <div class="guide-content">
+                <div class="guide-layout">
+                    <div class="guide-image">
+                        <img src="fhw creative/610863732_18551879572059885_3797831624806434402_n.jpg" alt="Kelly - Functional Health Warrior">
+                    </div>
+
+                    <div class="guide-text-content">
+                        <h2 class="guide-headline">I Practiced Traditional Medicine for Years. Then I Became the Patient — and Everything Changed.</h2>
+
+                        <div class="empathy-statement">
+                            <p>I know what it's like to sit across from a healthcare provider who has already decided they can't help you before you finish talking. To have someone fixate on one keyword — "insomnia" — and offer a prescription without ever asking why you're not sleeping.</p>
+
+                            <p>I lived it. After a vaccine reaction, my fever spiked to 104°. Then for four months: chronic migraines, brain fog so thick I was sleeping between patients at work. Traditional medicine ran the tests — MRIs, neurology, everything — and found nothing.</p>
+
+                            <p>Functional medicine found the answers in 90 days. Nine months later, I felt like myself again.</p>
+
+                            <p>What we're taught in traditional medicine brushes the surface of what it actually means to be healthy. The lab tests, the data, the checklists — they're such a snapshot. They're not truly letting you know if someone's healthy or not.</p>
+                        </div>
+
+                        <div class="authority-list">
+                            <div class="authority-title">Kelly Parker, NP — Founder</div>
+                            <div class="authority-item">Board-Certified Nurse Practitioner with 19 Years in Healthcare</div>
+                            <div class="authority-item">Former primary care provider who learned what they don't teach</div>
+                            <div class="authority-item">Personal recovery from a health crisis traditional medicine couldn't solve</div>
+                            <div class="authority-item">Creator of The Functional Warrior Method™</div>
+                            <div class="authority-item">Hundreds of clients who finally got answers</div>
+                        </div>
+
+                        <div style="margin-top: 40px;">
+                            <a href="#" class="cta-button">See How It Works</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Testimonial/Transformation Section -->
+    <section class="section testimonial-section">
+        <div class="container">
+            <h2 class="section-title">
+                Real Results. <span class="section-title-accent">Real Transformation.</span>
+            </h2>
+
+            <div class="testimonial-container">
+                <div class="testimonial-grid">
+                    <div class="testimonial-image">
+                        <img src="fhw creative/581957398_18541397206059885_3540440294232190775_n.jpg" alt="DJ Before and After Transformation">
+                    </div>
+
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">When you stop guessing and start testing, everything changes. Down 30 lbs, sleeping better, performing better, and leaner than I was in my 20s.</p>
+
+                        <div class="testimonial-author">
+                            <div class="testimonial-author-avatar">
+                                <img src="fhw creative/582117153_18541397230059885_3029920338913482829_n.jpg" alt="DJ">
+                            </div>
+                            <div class="testimonial-author-info">
+                                <h4>DJ Jacobucci</h4>
+                                <p>Owner, Upgraded Industries</p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">30+</div>
+                                <div class="stat-label">Lbs Lost</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">8</div>
+                                <div class="stat-label">Months</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Data-Driven</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#" class="cta-button">See How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Pricing -->
+    <section class="section pricing-section">
+        <div class="container">
+            <h2 class="section-title">
+                Two Ways to <span class="section-title-accent">Work Together</span>
+            </h2>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="tier-name">Essential Warrior</h3>
+                    <p class="tier-description">Comprehensive lab work, personalized protocol, and ongoing support to address your root causes and restore your foundation.</p>
+                    <p class="tier-best-for">Best for: People ready to finally get answers and start feeling like themselves again</p>
+                    <a href="#" class="cta-button">See How It Works</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3 class="tier-name">Optimized Warrior</h3>
+                    <p class="tier-description">Everything in Essential, plus advanced therapies — bioidentical hormones, peptides, thyroid optimization — for those ready to go beyond baseline and unlock peak performance.</p>
+                    <p class="tier-best-for">Best for: Those who've built the foundation and want to take it further</p>
+                    <a href="#" class="cta-button">See How It Works</a>
+                </div>
+            </div>
+
+            <p class="pricing-note">Transparent pricing. No surprise bills. You'll know exactly what you're paying for before we start.</p>
+        </div>
+    </section>
+
+    <!-- Section 6: The Plan -->
+    <section class="section plan-section">
+        <div class="container">
+            <h2 class="section-title">
+                How It <span class="section-title-accent">Works</span>
+            </h2>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Watch the Video</h3>
+                    <p class="step-description">In 20 minutes, you'll understand exactly how this works, what makes it different from everything you've tried, and whether it's right for you. No sales call. No pressure. Just clarity.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Get Comprehensive Labs</h3>
+                    <p class="step-description">We run the tests your doctor won't — thyroid, cortisol, hormones, nutrient levels — and analyze them against OPTIMAL ranges, not just "normal." This is where we find what everyone else missed.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Start Your Personalized Protocol</h3>
+                    <p class="step-description">Based on YOUR labs and YOUR body, we create a plan that addresses root causes in the right order. Foundation first. Then optimization. With ongoing support every step of the way.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#" class="cta-button">See How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Explanatory Paragraph -->
+    <section class="section explanatory-section">
+        <div class="container">
+            <h2 class="explanatory-headline">"I've Already Tried Everything."</h2>
+
+            <div class="explanatory-content">
+                <div class="explanatory-text">
+                    <p>I hear this constantly. And honestly? I believe you.</p>
+
+                    <p>You've probably tried eating better, exercising more, cutting out alcohol, sleeping earlier. Maybe you've taken supplements — random ones you found on Google or whatever your friend recommended. Maybe you've even tried another functional medicine practitioner who gave you a 47-item protocol and sent you on your way.</p>
+
+                    <p>None of that is the same as what we do here.</p>
+
+                    <p>We don't guess. We test. Comprehensive labs that reveal what's actually happening inside your body — not what a population of unhealthy Americans says is "normal."</p>
+
+                    <p>And we don't throw everything at you at once. We find the ONE area where you're most deficient, close that gap first, and watch the other areas start improving too. It's methodical. It's personal. And it actually works.</p>
+
+                    <p>Most people start feeling different within 90 days. By six to nine months, they feel like themselves again.</p>
+
+                    <p>If you've been searching for years, waiting another few weeks to finally get answers isn't much to ask.</p>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="#" class="cta-button">See How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Lead Generator -->
+    <section class="section lead-gen-section">
+        <div class="container">
+            <div class="lead-gen-container">
+                <div class="lead-gen-image">
+                    <div class="checklist-icon">&#128203;</div>
+                    <div class="checklist-title">The 10 Labs Your Doctor<br>Isn't Running<br>(But Should Be)</div>
+                </div>
+
+                <div class="lead-gen-form">
+                    <h3 class="form-title">The 10 Labs Your Doctor Isn't Running (But Should Be)</h3>
+                    <p class="form-description">Find out which critical markers most primary care providers skip — and why "normal" ranges might be hiding the real problem.</p>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="Enter your email">
+                    </div>
+
+                    <button class="submit-button">Get the Free Checklist</button>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#" class="cta-button">See How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Video -->
+    <section class="section video-section">
+        <div class="container">
+            <div class="video-container">
+                <h2 class="video-title">See The Functional Warrior Method™ in Action (20 Min)</h2>
+
+                <div class="video-placeholder">
+                    <img src="fhw creative/588833827_18545026411059885_5825242509348178543_n.jpg" alt="Kelly fitness">
+                    <div class="play-button">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-caption">Watch the full method explained</div>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#" class="cta-button">See How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 10: Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand">
+                        <img src="fhw creative/fhw logo.png" alt="Functional Health Warrior">
+                    </div>
+                    <p class="footer-description">
+                        Comprehensive testing that finds what everyone else missed. Finally feel like yourself again with The Functional Warrior Method™.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Essential Warrior</a></li>
+                        <li><a href="#" class="footer-link">Optimized Warrior</a></li>
+                        <li><a href="#" class="footer-link">Peptide Protocols</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Kelly's Story</a></li>
+                        <li><a href="#" class="footer-link">The Method</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Free Assessment</a></li>
+                        <li><a href="#" class="footer-link">Lab Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2024 Functional Health Warrior. All rights reserved. | Privacy Policy | Terms of Service
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LEVEL 10 FEATURE: JavaScript for Interactions -->
+    <script>
+        // Sticky CTA Bar - appears after scrolling past hero
+        window.addEventListener('scroll', function() {
+            const stickyCta = document.getElementById('stickyCta');
+            const heroHeight = document.querySelector('.hero-section').offsetHeight;
+
+            if (window.scrollY > heroHeight) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+        });
+
+        // Social Proof Notification - shows after 5 seconds
+        setTimeout(function() {
+            const socialProof = document.getElementById('socialProof');
+            socialProof.classList.add('active');
+
+            // Hide after 8 seconds
+            setTimeout(function() {
+                socialProof.classList.remove('active');
+            }, 8000);
+        }, 5000);
+    </script>
+</body>
+</html>
