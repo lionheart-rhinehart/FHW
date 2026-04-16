@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More | Functional Health Warriors</title>
+    <link rel="icon" type="image/png" href="fhw creative/fhw-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary-dark: #204622;
+            --color-primary-light: #91bb99;
+            --color-accent: #41664c;
+            --color-background: #ffffff;
+            --color-text: #2c3e50;
+            --gradient-primary: linear-gradient(135deg, #204622 0%, #41664c 100%);
+            --gradient-accent: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            --gradient-overlay: linear-gradient(135deg, rgba(32, 70, 34, 0.8) 0%, rgba(65, 102, 76, 0.7) 100%);
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --border-radius: 12px;
+            --shadow-card: 0 15px 40px rgba(32, 70, 34, 0.08);
+            --shadow-card-hover: 0 25px 60px rgba(32, 70, 34, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .top-nav {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            z-index: 10;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo img { max-width: 140px; height: auto; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover { color: var(--color-primary-light); }
+        .nav-cta {
+            padding: 12px 25px;
+            background: var(--gradient-accent);
+            color: var(--color-primary-dark);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(145, 187, 153, 0.4);
+        }
+
+        /* Hero */
+        .inquiry-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--gradient-primary);
+        }
+        .hero-bg-image {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--gradient-overlay);
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-headline {
+            font-family: var(--font-display);
+            font-size: 72px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #ffffff;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .hero-headline-accent {
+            color: var(--color-primary-light);
+            display: block;
+        }
+        .hero-subheadline {
+            font-size: 22px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+        .scroll-indicator-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .scroll-arrow {
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .scroll-arrow::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary-light);
+            border-radius: 50%;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollDot 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        @keyframes scrollDot {
+            0% { top: 10px; opacity: 1; }
+            50% { top: 25px; opacity: 0.5; }
+            100% { top: 10px; opacity: 1; }
+        }
+
+        /* Infographics Placeholder Section */
+        .infographics-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #f8faf8 0%, #e9f0ea 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .infographics-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 30%, rgba(32, 70, 34, 0.02) 30%, rgba(32, 70, 34, 0.02) 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(32, 70, 34, 0.02) 30%, rgba(32, 70, 34, 0.02) 70%, transparent 70%);
+            background-size: 60px 60px;
+        }
+        .infographics-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: 20px;
+        }
+        .section-title-accent {
+            color: var(--color-primary-light);
+        }
+        .section-subtitle {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+        }
+        .infographics-placeholder {
+            border: 3px dashed var(--color-primary-light);
+            border-radius: 16px;
+            padding: 80px 40px;
+            background: rgba(255, 255, 255, 0.7);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .placeholder-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .placeholder-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: 10px;
+        }
+        .placeholder-text {
+            font-size: 16px;
+            color: #888;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 120px 0;
+            background: #ffffff;
+        }
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-category {
+            font-family: var(--font-display);
+            font-size: 28px;
+            color: var(--color-primary-dark);
+            letter-spacing: 2px;
+            margin: 50px 0 20px;
+            text-transform: uppercase;
+        }
+        .faq-category:first-child {
+            margin-top: 0;
+        }
+        .faq-item {
+            background: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-card);
+            margin-bottom: 16px;
+            overflow: hidden;
+            border-left: 4px solid var(--color-primary-light);
+            transition: box-shadow 0.3s ease;
+        }
+        .faq-item:hover {
+            box-shadow: var(--shadow-card-hover);
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 24px 60px 24px 30px;
+            text-align: left;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            position: relative;
+            line-height: 1.4;
+        }
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--color-primary-light);
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-question::after {
+            content: '\2212';
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 2000px;
+        }
+        .faq-answer-inner {
+            padding: 0 30px 28px;
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--color-text);
+        }
+        .faq-answer-inner p {
+            margin-bottom: 12px;
+        }
+        .faq-answer-inner p:last-child {
+            margin-bottom: 0;
+        }
+        .faq-answer-inner ul {
+            list-style: none;
+            margin: 10px 0;
+            padding: 0;
+        }
+        .faq-answer-inner ul li {
+            padding: 4px 0 4px 22px;
+            position: relative;
+        }
+        .faq-answer-inner ul li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary-light);
+            font-weight: bold;
+        }
+        .faq-answer-inner ol {
+            margin: 10px 0;
+            padding-left: 22px;
+        }
+        .faq-answer-inner ol li {
+            padding: 4px 0;
+        }
+        .faq-answer-inner .faq-highlight {
+            background: rgba(145, 187, 153, 0.1);
+            border-left: 3px solid var(--color-primary-light);
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 12px 0;
+            font-style: italic;
+            color: var(--color-accent);
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 80px 0;
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0.02) 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0.02) 70%, transparent 70%);
+            background-size: 60px 60px;
+        }
+        .form-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-title {
+            font-family: var(--font-display);
+            font-size: 52px;
+            font-weight: 400;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .form-subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .form-wrapper {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        .form-wrapper iframe {
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            height: 500px;
+            overflow: hidden;
+            display: block;
+            transition: height 0.3s ease;
+        }
+
+        /* Ready CTA Section */
+        .ready-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8faf8 0%, #e9f0ea 100%);
+            text-align: center;
+        }
+        .ready-headline {
+            font-family: var(--font-display);
+            font-size: 52px;
+            font-weight: 400;
+            color: var(--color-primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+        .ready-text {
+            font-size: 20px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .ready-cta {
+            display: inline-block;
+            padding: 22px 55px;
+            font-size: 18px;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            color: var(--color-primary-dark);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 12px 35px rgba(145, 187, 153, 0.4);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            text-decoration: none;
+        }
+        .ready-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 45px rgba(145, 187, 153, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-headline { font-size: 48px; letter-spacing: 2px; }
+            .hero-subheadline { font-size: 18px; }
+            .section-title { font-size: 32px; }
+            .form-title { font-size: 38px; }
+            .ready-headline { font-size: 38px; }
+            .form-wrapper { padding: 15px; }
+            .infographics-placeholder { padding: 50px 25px; }
+            .top-nav { padding: 15px 20px; }
+            .nav-logo img { max-width: 110px; }
+            .infographics-section,
+            .faq-section { padding: 80px 0; }
+            .form-section { padding: 60px 0; }
+            .ready-section { padding: 70px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="inquiry-hero">
+        <img src="fhw creative/IMG_4292.jpg" alt="Functional Health Warriors" class="hero-bg-image">
+        <div class="hero-overlay"></div>
+
+        <nav class="top-nav">
+            <div class="nav-logo">
+                <a href="index.html"><img src="fhw creative/fhw logo - no background.png" alt="Functional Health Warriors"></a>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <h1 class="hero-headline">
+                Curious If This Is Right
+                <span class="hero-headline-accent">For You?</span>
+            </h1>
+            <p class="hero-subheadline">
+                No commitment. No pressure. Just the information you need to decide if functional health testing is your next step.
+            </p>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-indicator-text">Scroll to Learn More</div>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Infographics Placeholder Section -->
+    <section class="infographics-section">
+        <div class="container">
+            <div class="infographics-content">
+                <h2 class="section-title">
+                    Understanding <span class="section-title-accent">Functional Health</span>
+                </h2>
+                <p class="section-subtitle">Visual breakdowns of how our approach works and why it gets results.</p>
+
+                <div class="infographics-placeholder">
+                    <div class="placeholder-icon">&#128202;</div>
+                    <p class="placeholder-title">Infographics Coming Soon</p>
+                    <p class="placeholder-text">This section will host visual guides and infographics to help you understand the Functional Warrior Method.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Frequently Asked <span class="section-title-accent">Questions</span></h2>
+            <p class="section-subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">Everything you need to know before getting started</p>
+
+            <div class="faq-grid">
+
+                <h3 class="faq-category">Getting Started</h3>
+
+                <div class="faq-item">
+                    <button class="faq-question">What is the cost to get started?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p><strong>To begin:</strong></p>
+                            <ul>
+                                <li><strong>Labs: $350</strong></li>
+                                <li><strong>Initial Consult (60 minutes): $300</strong></li>
+                            </ul>
+                            <p>During your consult, we will:</p>
+                            <ul>
+                                <li>Review your labs in detail</li>
+                                <li>Identify root causes</li>
+                                <li>Build your personalized plan</li>
+                                <li>Discuss treatment options and next steps</li>
+                            </ul>
+                            <div class="faq-highlight">We also offer a referral program: $100 off your consult + $100 off one month of service for the person who referred you.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Do you accept insurance or what forms of payment do you take?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We are a cash-based practice, which allows us to spend more time with you, look deeper into your health, and create truly personalized plans without the limitations of insurance-based care.</p>
+                            <p>We accept all major forms of payment (credit/debit/HSA/FSA where applicable).</p>
+                            <p>While we do not bill insurance, you are welcome to submit receipts for potential reimbursement depending on your plan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">What does ongoing care cost?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Ongoing care is structured through monthly membership-based plans, designed to provide consistency, accountability, and results.</p>
+                            <p><strong>Most patients fall into: $200&ndash;$360/month</strong>, depending on their plan.</p>
+                            <p>These plans may include:</p>
+                            <ul>
+                                <li>Medications (when appropriate)</li>
+                                <li>Supplies</li>
+                                <li>Follow-up visits (typically every 3 months)</li>
+                                <li>Ongoing clinical oversight and communication</li>
+                                <li>Routine lab monitoring (usually every 6 months)</li>
+                            </ul>
+                            <div class="faq-highlight">We will walk through all options during your consultation so you can make an informed decision&mdash;no pressure, just clarity.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">How soon can I get started?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Once your intake forms are complete, your lab requisition is typically sent within 48&ndash;72 hours.</p>
+                            <p>From there:</p>
+                            <ul>
+                                <li>Labs are completed</li>
+                                <li>Results are returned</li>
+                                <li>Your consult is scheduled</li>
+                            </ul>
+                            <p>Most patients are fully onboarded within 2&ndash;3 weeks, depending on lab timing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">What happens after I book?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Once you book:</p>
+                            <ol>
+                                <li>You'll receive intake forms via our portal</li>
+                                <li>Your lab requisition will be sent within 48&ndash;72 hours</li>
+                                <li>You'll complete labs (timing matters&mdash;we'll guide you)</li>
+                                <li>Your consult will be scheduled after labs are completed</li>
+                            </ol>
+                            <p>We guide you through every step so nothing feels confusing or overwhelming.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="faq-category">Labs &amp; Consultations</h3>
+
+                <div class="faq-item">
+                    <button class="faq-question">Can I use labs I already had done with my PCP?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We love that you're being proactive with your health and we absolutely review any prior labs for trend analysis.</p>
+                            <p>However, all new patients are required to complete our foundational lab panel ($350) prior to their initial consultation.</p>
+                            <p><strong>Why this matters:</strong></p>
+                            <ul>
+                                <li>It ensures we're looking at the right markers</li>
+                                <li>It allows us to interpret your labs through an optimal (not just "normal") lens</li>
+                                <li>It creates a consistent baseline so we can track real progress over time</li>
+                            </ul>
+                            <div class="faq-highlight">Think of it less as repeating labs&mdash;and more as finally getting the full picture.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Do I have to complete labs before booking my consultation?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Yes&mdash;labs are required before your initial consultation. This is intentional.</p>
+                            <p>We don't do surface-level visits or generic recommendations. Your consult is designed to be:</p>
+                            <ul>
+                                <li>Specific</li>
+                                <li>Data-driven</li>
+                                <li>Immediately actionable</li>
+                            </ul>
+                            <p>Having your labs completed beforehand allows us to use your time efficiently and provide real answers&mdash;not guesswork.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Do you prescribe medications at the first visit?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>If clinically appropriate, yes.</p>
+                            <p>However, our approach is not built around quick prescriptions. We focus on:</p>
+                            <ul>
+                                <li>Understanding root causes</li>
+                                <li>Reviewing your full lab picture</li>
+                                <li>Making thoughtful, individualized decisions</li>
+                            </ul>
+                            <p>Some patients begin treatment right away, while others start with foundational changes first.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="faq-category">Services &amp; Approach</h3>
+
+                <div class="faq-item">
+                    <button class="faq-question">What services do you provide?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We focus on root-cause, performance-driven healthcare&mdash;not symptom management. Our services include:</p>
+                            <ul>
+                                <li>Comprehensive lab analysis</li>
+                                <li>Hormone optimization (TRT, BHRT when appropriate)</li>
+                                <li>Peptide education and clinical oversight</li>
+                                <li>Metabolic health and insulin resistance support</li>
+                                <li>Fatigue, stress, and recovery optimization</li>
+                                <li>Personalized nutrition, supplementation, and lifestyle strategies</li>
+                            </ul>
+                            <p>Our approach is data-driven, individualized, and focused on long-term results&mdash;not temporary fixes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">How is this different from my primary care provider?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We are not a replacement for your PCP. We are a specialized, complementary layer of care.</p>
+                            <p><strong>The difference:</strong></p>
+                            <ul>
+                                <li>PCP = disease management</li>
+                                <li>Functional Health Warriors = optimization and root cause</li>
+                            </ul>
+                            <p>We look deeper, spend more time, and focus on helping you feel better, perform better, and understand your body.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">What makes your approach different?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We don't just look for disease&mdash;we look for why your body isn't functioning optimally. That means:</p>
+                            <ul>
+                                <li>Deeper lab analysis</li>
+                                <li>Focus on optimal ranges</li>
+                                <li>Connecting systems, not isolating symptoms</li>
+                                <li>Building a plan that evolves with you</li>
+                            </ul>
+                            <p>This is a different model of care&mdash;and it's meant to be.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Do you offer "just TRT" or "just peptides"?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p><strong>Short answer:</strong> No&mdash;we don't practice that way.</p>
+                            <p>We don't provide isolated treatments without understanding the full picture. Because:</p>
+                            <ul>
+                                <li>Hormones don't exist in a vacuum</li>
+                                <li>Metabolism, stress, thyroid, and inflammation all matter</li>
+                                <li>Skipping that step leads to poor outcomes long-term</li>
+                            </ul>
+                            <p>If you're looking for a quick prescription without deeper evaluation, we're probably not the right fit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Will you coordinate with my other providers?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Yes, we're happy to collaborate with your PCP or specialists when needed.</p>
+                            <p>We see ourselves as a complement to your existing care, not a replacement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="faq-category">Fit &amp; Commitment</h3>
+
+                <div class="faq-item">
+                    <button class="faq-question">What kind of patient is the best fit for your practice?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Our best patients are:</p>
+                            <ul>
+                                <li>Ready to invest in their health</li>
+                                <li>Open to education and lifestyle changes</li>
+                                <li>Consistent and committed</li>
+                                <li>Looking for long-term transformation, not quick fixes</li>
+                            </ul>
+                            <p>If you're looking for instant results, one-time prescriptions, or minimal involvement&mdash;we may not be the right fit, and we respect that.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Do you work with a specific age group?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We primarily work with adults (18+) who are ready to take ownership of their health. Our patients are typically individuals who:</p>
+                            <ul>
+                                <li>Feel like something is "off" but haven't found answers</li>
+                                <li>Want to improve energy, metabolism, hormones, or body composition</li>
+                                <li>Are motivated to make lifestyle changes&mdash;not just rely on quick fixes</li>
+                            </ul>
+                            <p>If you're looking for a passive approach, we may not be the best fit&mdash;and that's okay.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">How involved do I need to be in this process?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p><strong>Very.</strong> This is a collaborative process, not a passive one.</p>
+                            <p>The patients who get the best results are the ones who:</p>
+                            <ul>
+                                <li>Stay engaged</li>
+                                <li>Follow through</li>
+                                <li>Communicate openly</li>
+                            </ul>
+                            <p>We bring the expertise&mdash;you bring the consistency.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Can I just do one visit instead of ongoing care?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We're designed for ongoing care and real results&mdash;not one-time visits.</p>
+                            <p>While you'll receive a full plan at your initial consult, true progress requires:</p>
+                            <ul>
+                                <li>Follow-up</li>
+                                <li>Lab monitoring</li>
+                                <li>Adjustments over time</li>
+                            </ul>
+                            <p>Health isn't a one-and-done process&mdash;and we don't pretend it is.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Can I cancel anytime?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Because our programs include medications, supplies, and clinical oversight, they are structured in care cycles (typically 2&ndash;3 months).</p>
+                            <p>We're always happy to discuss your plan and make sure it's the right fit&mdash;but immediate cancellations may not be feasible once services and medications have been provided.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">What if I'm not ready to commit yet?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>That's completely okay. This type of care works best when you're:</p>
+                            <ul>
+                                <li>Ready to take ownership</li>
+                                <li>Open to change</li>
+                                <li>Willing to invest in your health</li>
+                            </ul>
+                            <p>If you're still exploring, we recommend starting with a Meet &amp; Greet call to see if this feels like the right fit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="faq-category">Results &amp; Support</h3>
+
+                <div class="faq-item">
+                    <button class="faq-question">What if I've tried everything and nothing has worked?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>You're actually the exact person we tend to help the most.</p>
+                            <p>Most of our patients come to us after:</p>
+                            <ul>
+                                <li>Being told their labs are "normal"</li>
+                                <li>Trying multiple approaches without success</li>
+                                <li>Feeling dismissed or stuck</li>
+                            </ul>
+                            <p>We look deeper, connect patterns, and build a plan that actually makes sense for your body.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Do you guarantee results?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We don't guarantee outcomes&mdash;but we do guarantee:</p>
+                            <ul>
+                                <li>A thorough, data-driven approach</li>
+                                <li>Personalized care</li>
+                                <li>Ongoing support and adjustments</li>
+                            </ul>
+                            <p>Your results depend on consistency, follow-through, and your body's unique response&mdash;but we're with you every step of the way.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">How quickly will I hear back if I have questions?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We respond to messages within 48&ndash;72 business hours.</p>
+                            <p><strong>Business hours:</strong> Monday&ndash;Friday, 9:00 AM &ndash; 4:30 PM</p>
+                            <p>We appreciate your patience as we give each patient thoughtful, individualized care.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">What states do you currently service?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We primarily serve patients in Ohio and Florida, with expanding availability in other states through telehealth.</p>
+                            <p>If you are outside of our current service area, we encourage you to submit your information and let us know your state. We're actively growing and will notify you as soon as services become available in your area.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">What if I'm a shift worker or have an unusual schedule?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We work with that all the time. We'll guide you on:</p>
+                            <ul>
+                                <li>Proper lab timing</li>
+                                <li>Sleep and recovery strategies</li>
+                                <li>Adjustments based on your schedule</li>
+                            </ul>
+                            <p>Your plan is built around your real life&mdash;not the other way around.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Inquiry Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-content">
+                <div class="form-header">
+                    <h2 class="form-title">Tell Us About You</h2>
+                    <p class="form-subtitle">Fill out the form below and we'll get back to you with everything you need to know.</p>
+                </div>
+
+                <div class="form-wrapper">
+                    <iframe
+                        src="https://api.leadconnectorhq.com/widget/form/iHT9rYnrHjZdwtOoz05l"
+                        id="inline-iHT9rYnrHjZdwtOoz05l"
+                        data-layout="{'id':'INLINE'}"
+                        data-trigger-type="alwaysShow"
+                        data-trigger-value=""
+                        data-activation-type="alwaysActivated"
+                        data-activation-value=""
+                        data-deactivation-type="neverDeactivate"
+                        data-deactivation-value=""
+                        data-form-name="Inquiry Page for Potential Clients"
+                        data-height="2675"
+                        data-layout-iframe-id="inline-iHT9rYnrHjZdwtOoz05l"
+                        data-form-id="iHT9rYnrHjZdwtOoz05l"
+                        title="Inquiry Page for Potential Clients"
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feeling Ready Section -->
+    <section class="ready-section">
+        <div class="container">
+            <h2 class="ready-headline">Feeling Ready?</h2>
+            <p class="ready-text">Skip the inquiry and head straight to the payment page to get your comprehensive lab work started.</p>
+            <a href="https://apply.functionalhealthwarriors.org/350-page" class="ready-cta">Proceed to Sign Up</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="site-footer"></div>
+    <script src="footer.js"></script>
+
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = this.parentElement;
+                var isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item.active').forEach(function(openItem) {
+                    openItem.classList.remove('active');
+                });
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Dynamic iframe resize
+        window.addEventListener('message', function(e) {
+            var iframe = document.getElementById('inline-iHT9rYnrHjZdwtOoz05l');
+            if (!iframe) return;
+            if (e.data && e.data.type === 'form-height' && e.data.height) {
+                iframe.style.height = e.data.height + 'px';
+            }
+        });
+
+        // Fallback: poll iframe content height
+        (function() {
+            var iframe = document.getElementById('inline-iHT9rYnrHjZdwtOoz05l');
+            if (!iframe) return;
+            var lastHeight = 0;
+            var checks = 0;
+            var interval = setInterval(function() {
+                checks++;
+                try {
+                    var h = iframe.contentDocument.body.scrollHeight;
+                    if (h && h !== lastHeight) {
+                        iframe.style.height = h + 'px';
+                        lastHeight = h;
+                    }
+                } catch(e) {
+                    // Cross-origin: use data-height attribute as fallback
+                    var dh = iframe.getAttribute('data-height');
+                    if (dh) {
+                        iframe.style.height = dh + 'px';
+                        clearInterval(interval);
+                    }
+                }
+                if (checks > 60) clearInterval(interval);
+            }, 500);
+        })();
+    </script>
+</body>
+</html>
