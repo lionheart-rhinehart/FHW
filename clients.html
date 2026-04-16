@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clients | Functional Health Warriors</title>
+    <link rel="icon" type="image/png" href="fhw creative/fhw-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary-dark: #204622;
+            --color-primary-light: #91bb99;
+            --color-accent: #41664c;
+            --color-background: #ffffff;
+            --color-text: #2c3e50;
+            --gradient-primary: linear-gradient(135deg, #204622 0%, #41664c 100%);
+            --gradient-accent: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            --gradient-overlay: linear-gradient(135deg, rgba(32, 70, 34, 0.8) 0%, rgba(65, 102, 76, 0.7) 100%);
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --border-radius: 12px;
+            --shadow-card: 0 15px 40px rgba(32, 70, 34, 0.08);
+            --shadow-card-hover: 0 25px 60px rgba(32, 70, 34, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .top-nav {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            z-index: 10;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+.nav-logo img {
+            max-width: 110px;
+            height: auto;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50px;
+            padding: 1px 5px;
+        }
+
+        /* Hero */
+        .inquiry-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--gradient-primary);
+        }
+        .hero-bg-image {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 55%;
+            z-index: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--gradient-overlay);
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 60px 20px 120px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-headline {
+            font-family: var(--font-display);
+            font-size: 72px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #ffffff;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .hero-headline-accent {
+            color: var(--color-primary-light);
+        }
+        .hero-subheadline {
+            font-size: 22px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Hero Buttons */
+        .hero-cta-container {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hero-cta-primary {
+            padding: 22px 55px;
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            color: #204622;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 12px 35px rgba(145, 187, 153, 0.4);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+        }
+        .hero-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 45px rgba(145, 187, 153, 0.5);
+        }
+        .hero-cta-secondary {
+            padding: 22px 55px;
+            font-size: 18px;
+            font-weight: 700;
+            background: transparent;
+            color: #ffffff;
+            border: 3px solid #ffffff;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+        }
+        .hero-cta-secondary:hover {
+            background: #ffffff;
+            color: #204622;
+            transform: translateY(-3px);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+        .scroll-indicator-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .scroll-arrow {
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .scroll-arrow::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary-light);
+            border-radius: 50%;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollDot 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        @keyframes scrollDot {
+            0% { top: 10px; opacity: 1; }
+            50% { top: 25px; opacity: 0.5; }
+            100% { top: 10px; opacity: 1; }
+        }
+
+        /* Client Portal Section */
+        .client-portal-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8faf8 0%, #e9f0ea 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .client-portal-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 30%, rgba(32, 70, 34, 0.02) 30%, rgba(32, 70, 34, 0.02) 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(32, 70, 34, 0.02) 30%, rgba(32, 70, 34, 0.02) 70%, transparent 70%);
+            background-size: 60px 60px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .portal-card {
+            background: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-card);
+            padding: 50px 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--color-primary-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .portal-card:hover {
+            box-shadow: var(--shadow-card-hover);
+            transform: translateY(-5px);
+        }
+        .portal-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(145, 187, 153, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+        }
+        .portal-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: 12px;
+        }
+        .portal-subtitle {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+        .portal-btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-size: 14px;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            color: var(--color-primary-dark);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 8px 25px rgba(145, 187, 153, 0.3);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            text-decoration: none;
+        }
+        .portal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(145, 187, 153, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-headline { font-size: 48px; letter-spacing: 2px; }
+            .hero-subheadline { font-size: 18px; }
+            .top-nav { padding: 15px 20px; }
+            .nav-logo img { max-width: 110px; }
+            .portal-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .portal-card { padding: 40px 30px; }
+            .client-portal-section { padding: 60px 0; }
+        }
+
+        /* 2K / QHD monitors (1921px - 2560px) */
+        @media (min-width: 1921px) {
+            .container { max-width: 1600px; }
+            .hero-content { max-width: 1100px; }
+            .hero-headline { font-size: 90px; }
+            .hero-subheadline { font-size: 28px; max-width: 900px; }
+            .portal-grid { max-width: 1100px; gap: 50px; }
+            .portal-title { font-size: 28px; }
+            .portal-subtitle { font-size: 19px; }
+            .portal-btn { font-size: 16px; padding: 18px 48px; }
+            .client-portal-section { padding: 140px 0; }
+        }
+
+        /* 4K monitors (2561px+) */
+        @media (min-width: 2561px) {
+            .container { max-width: 2000px; }
+            .hero-content { max-width: 1400px; }
+            .hero-headline { font-size: 110px; }
+            .hero-subheadline { font-size: 34px; max-width: 1100px; }
+            .portal-grid { max-width: 1400px; gap: 60px; }
+            .portal-card { padding: 70px 50px; }
+            .portal-icon { width: 110px; height: 110px; }
+            .portal-icon svg { width: 56px; height: 56px; }
+            .portal-title { font-size: 32px; }
+            .portal-subtitle { font-size: 22px; }
+            .portal-btn { font-size: 20px; padding: 22px 55px; }
+            .client-portal-section { padding: 180px 0; }
+            .nav-logo img { max-width: 180px; }
+            .top-nav { padding: 30px 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="inquiry-hero">
+        <img src="fhw creative/IMG_4521.jpg" alt="Functional Health Warriors" class="hero-bg-image">
+        <div class="hero-overlay"></div>
+
+        <nav class="top-nav">
+            <div class="nav-logo">
+                <a href="index.html"><img src="fhw creative/fhw logo - no background.png" alt="Functional Health Warriors"></a>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <h1 class="hero-headline">
+                Welcome
+                <span class="hero-headline-accent">Back!</span>
+            </h1>
+            <p class="hero-subheadline">
+                Access your Re-order Medication forms and JANE account here.
+            </p>
+
+            <div class="hero-cta-container">
+                <a href="https://apply.functionalhealthwarriors.org/350-page" class="hero-cta-primary">Sign Up</a>
+                <a href="inquiry.html" class="hero-cta-secondary">Learn More</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-indicator-text">Scroll to Learn More</div>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Client Portal Section -->
+    <section class="client-portal-section">
+        <div class="container">
+            <div class="portal-grid">
+
+                <!-- Medication Re-order Card -->
+                <div class="portal-card">
+                    <div class="portal-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#204622" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 2h6l3 7H6L9 2z"/>
+                            <rect x="3" y="9" width="18" height="4" rx="1"/>
+                            <path d="M5 13v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>
+                            <path d="M9 17h6"/>
+                        </svg>
+                    </div>
+                    <h3 class="portal-title">Medication Re-order</h3>
+                    <p class="portal-subtitle">Get your prescribed medication through a form.</p>
+                    <a href="https://apply.functionalhealthwarriors.org/re-order-medicine" class="portal-btn">Re-order Medication</a>
+                </div>
+
+                <!-- JANE Account Card -->
+                <div class="portal-card">
+                    <div class="portal-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#204622" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3 class="portal-title">JANE Account Login</h3>
+                    <p class="portal-subtitle">Access your personal accounts in JANE.</p>
+                    <a href="#" class="portal-btn">JANE Website</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="site-footer"></div>
+    <script src="footer.js"></script>
+
+    <!-- Chat Widget -->
+    <style>
+        .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1001; }
+        .chat-button { width: 60px; height: 60px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; border: 2px solid #91bb99; }
+        .chat-button:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(145,187,153,0.3); }
+        .chat-icon { width: 30px; height: 30px; fill: #204622; }
+        .chat-popup { position: absolute; bottom: 80px; right: 0; width: 320px; background: #ffffff; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); padding: 25px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; border: 2px solid #91bb99; }
+        .chat-popup.active { opacity: 1; visibility: visible; transform: translateY(0); }
+        .chat-popup-header { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: #204622; margin-bottom: 12px; }
+        .chat-popup-text { font-size: 14px; color: #2c3e50; line-height: 1.6; margin-bottom: 18px; }
+        .chat-popup-link { display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #204622 0%, #41664c 100%); color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; transition: all 0.3s ease; text-align: center; width: 100%; box-sizing: border-box; }
+        .chat-popup-link:hover { background: linear-gradient(135deg, #41664c 0%, #204622 100%); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(32,70,34,0.3); }
+        .chat-close { position: absolute; top: 15px; right: 15px; width: 24px; height: 24px; cursor: pointer; opacity: 0.6; transition: opacity 0.3s ease; }
+        .chat-close:hover { opacity: 1; }
+        .chat-close::before, .chat-close::after { content: ''; position: absolute; width: 16px; height: 2px; background: #2c3e50; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); }
+        .chat-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+        @media (min-width: 2561px) {
+            .chat-button { width: 80px; height: 80px; }
+            .chat-icon { width: 40px; height: 40px; }
+            .chat-popup { width: 400px; padding: 30px; }
+            .chat-popup-header { font-size: 22px; }
+            .chat-popup-text { font-size: 17px; }
+        }
+    </style>
+    <div class="chat-widget">
+        <div class="chat-button" id="chatButton">
+            <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                <circle cx="12" cy="10" r="1.5"/>
+                <circle cx="8" cy="10" r="1.5"/>
+                <circle cx="16" cy="10" r="1.5"/>
+            </svg>
+        </div>
+        <div class="chat-popup" id="chatPopup">
+            <div class="chat-close" id="chatClose"></div>
+            <div class="chat-popup-header">Have Questions?</div>
+            <div class="chat-popup-text">
+                We're here to help you on your health journey. Click below to submit your inquiry and our clinical team will respond promptly.
+            </div>
+            <a href="https://apply.functionalhealthwarriors.org/sign-up" class="chat-popup-link" target="_blank">Submit an Inquiry</a>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var btn = document.getElementById('chatButton');
+            var pop = document.getElementById('chatPopup');
+            var close = document.getElementById('chatClose');
+            btn.addEventListener('click', function () { pop.classList.toggle('active'); });
+            close.addEventListener('click', function (e) { e.stopPropagation(); pop.classList.remove('active'); });
+            document.addEventListener('click', function (e) {
+                if (!btn.contains(e.target) && !pop.contains(e.target)) pop.classList.remove('active');
+            });
+        })();
+    </script>
+
+</body>
+</html>

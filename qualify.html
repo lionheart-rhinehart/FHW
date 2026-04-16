@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Qualify? | Functional Health Warriors</title>
+    <link rel="icon" type="image/png" href="fhw creative/fhw-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage-900: #1C2920;
+            --sage-800: #2A3F32;
+            --sage-700: #3a5242;
+            --cream-100: #FDFBF7;
+            --cream-200: #F4EFE6;
+            --cream-300: #E8DFD0;
+            --brass-400: #D4B88B;
+            --brass-500: #C5A880;
+            --brass-600: #A38A66;
+            --charcoal: #1A1C1A;
+            --stone: #78716c;
+            --border-cream: #E8DFD0;
+            --border-stone: #d6d3d1;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            background: var(--sage-900);
+            color: var(--cream-100);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background: var(--sage-900);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px 60px;
+            position: relative;
+        }
+
+        /* Textured backdrop — brass cross-hatch motif on warm sage, adapted from the Understanding Functional Health section */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at top, rgba(212, 184, 139, 0.09) 0%, transparent 55%),
+                radial-gradient(ellipse at bottom, rgba(212, 184, 139, 0.05) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 30%, rgba(212, 184, 139, 0.035) 30%, rgba(212, 184, 139, 0.035) 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(212, 184, 139, 0.035) 30%, rgba(212, 184, 139, 0.035) 70%, transparent 70%);
+            background-size: 100% 100%, 100% 100%, 72px 72px, 72px 72px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .quiz-header, .progress-wrap, .stage { position: relative; z-index: 1; }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 28px;
+            max-width: 640px;
+        }
+
+        .brand {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: 26px;
+            letter-spacing: 0.04em;
+            color: var(--brass-400);
+            margin-bottom: 6px;
+            font-style: italic;
+        }
+
+        .brand span { color: var(--cream-100); font-weight: 500; font-style: normal; }
+
+        .quiz-subtitle {
+            font-size: 11px;
+            color: var(--brass-500);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-family: var(--font-heading);
+        }
+
+        /* Progress */
+        .progress-wrap {
+            width: 100%;
+            max-width: 640px;
+            margin-bottom: 28px;
+        }
+        .progress-track {
+            height: 2px;
+            background: rgba(212, 184, 139, 0.12);
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--brass-600), var(--brass-400));
+            transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            font-size: 10px;
+            color: var(--brass-500);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-family: var(--font-heading);
+            font-weight: 500;
+        }
+
+        /* Card stage */
+        .stage {
+            width: 100%;
+            max-width: 640px;
+            position: relative;
+            perspective: 1400px;
+        }
+
+        .card {
+            background: var(--cream-100);
+            border: 1px solid var(--border-cream);
+            border-radius: 4px;
+            padding: 52px 48px;
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.35),
+                0 0 0 1px rgba(197, 168, 128, 0.08);
+            position: relative;
+            overflow: hidden;
+            color: var(--charcoal);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--brass-500), transparent);
+            opacity: 0.9;
+        }
+
+        .card.enter {
+            animation: cardEnter 0.6s cubic-bezier(0.25, 0.8, 0.3, 1) forwards;
+        }
+        .card.exit {
+            animation: cardExit 0.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        @keyframes cardEnter {
+            0% { opacity: 0; transform: translateX(40px) rotateY(-6deg); }
+            100% { opacity: 1; transform: translateX(0) rotateY(0); }
+        }
+        @keyframes cardExit {
+            0% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(-40px) rotateY(4deg); }
+        }
+
+        .step-label {
+            font-size: 10px;
+            letter-spacing: 0.25em;
+            color: var(--brass-600);
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            font-weight: 600;
+            font-family: var(--font-heading);
+        }
+
+        h1.q-title {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 38px;
+            line-height: 1.15;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .q-title em {
+            color: var(--brass-600);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .q-body {
+            font-size: 15.5px;
+            line-height: 1.7;
+            color: #4a4a48;
+            margin-bottom: 28px;
+            font-weight: 400;
+        }
+
+        .q-body strong { color: var(--charcoal); font-weight: 600; }
+
+        /* Info callout */
+        .callout {
+            background: var(--cream-200);
+            border: 1px solid var(--border-cream);
+            border-left: 3px solid var(--brass-500);
+            padding: 24px 26px;
+            margin-bottom: 28px;
+        }
+
+        .callout-title {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            color: var(--charcoal);
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border-stone);
+        }
+        .price-row:last-child { border-bottom: none; }
+        .price-row .label {
+            color: var(--charcoal);
+            font-size: 14px;
+            font-family: var(--font-heading);
+            font-weight: 500;
+        }
+        .price-row .amount {
+            font-family: var(--font-serif);
+            color: var(--brass-600);
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+        .bullet-list li {
+            padding: 7px 0 7px 22px;
+            position: relative;
+            font-size: 14px;
+            color: var(--charcoal);
+            font-family: var(--font-heading);
+            font-weight: 400;
+        }
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 16px;
+            width: 12px; height: 1px;
+            background: var(--brass-500);
+        }
+
+        /* Service grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .service-card {
+            background: var(--cream-100);
+            border: 1px solid var(--border-stone);
+            padding: 16px 20px;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 14px;
+            color: var(--charcoal);
+            user-select: none;
+            position: relative;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            text-align: center;
+        }
+        .service-card:hover {
+            border-color: var(--brass-500);
+            background: var(--cream-200);
+        }
+        .service-card.selected {
+            border-color: var(--brass-500);
+            background: var(--sage-900);
+            color: var(--brass-400);
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .selection-counter {
+            font-size: 10px;
+            color: var(--stone);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin: 22px 0 26px;
+            text-align: center;
+            font-family: var(--font-heading);
+            font-weight: 500;
+        }
+        .selection-counter strong {
+            color: var(--brass-600);
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        /* Actions */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 28px;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--sage-900);
+            color: var(--brass-400);
+            border-color: var(--brass-500);
+        }
+        .btn-primary:hover:not(:disabled) {
+            background: var(--sage-800);
+            color: var(--cream-100);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(28, 41, 32, 0.25);
+        }
+        .btn-primary:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--stone);
+            border-color: var(--border-stone);
+        }
+        .btn-ghost:hover {
+            color: var(--charcoal);
+            border-color: var(--brass-500);
+        }
+
+        /* Disqualify card */
+        .card.disqualify {
+            text-align: center;
+        }
+        .card.disqualify .icon-wrap {
+            width: 64px; height: 64px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            border: 1px solid var(--brass-500);
+            background: var(--cream-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brass-600);
+            font-family: var(--font-serif);
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        /* Congrats card */
+        .card.congrats {
+            text-align: center;
+            background: var(--cream-100);
+        }
+        .card.congrats .icon-wrap {
+            width: 72px; height: 72px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: var(--sage-900);
+            border: 1px solid var(--brass-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brass-400);
+            font-family: var(--font-serif);
+            font-size: 32px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(28, 41, 32, 0.2);
+        }
+
+        @media (max-width: 640px) {
+            .card { padding: 34px 24px; }
+            h1.q-title { font-size: 26px; }
+            .service-grid { grid-template-columns: 1fr; }
+            .q-body { font-size: 14.5px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="brand">Functional Health <span>Warriors</span></div>
+        <div class="quiz-subtitle">Qualification</div>
+    </header>
+
+    <div class="progress-wrap">
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-label">
+            <span id="stepLabel">Step 1 of 8</span>
+            <span id="stepPct">0%</span>
+        </div>
+    </div>
+
+    <div class="stage">
+        <div id="cardMount"></div>
+    </div>
+
+<script>
+(function () {
+    const TOTAL = 8;
+    const APPLY_URL = 'https://apply.functionalhealthwarriors.org/sign-up';
+
+    const steps = [
+        {
+            id: 'start',
+            label: 'Welcome',
+            title: "Ready to know if you qualify?",
+            body: "This short qualifier walks you through what working with Functional Health Warriors looks like — the investment, the process, and who this is for. Answer honestly. It takes less than a minute.",
+            advance: "Let's Go",
+            stop: "I'm Not Ready Yet"
+        },
+        {
+            id: 'cost',
+            label: 'The Investment',
+            title: "Understanding the Investment",
+            body: "We're a cash-based functional medicine practice. Here's what the core pathway looks like before you begin care:",
+            pricing: [
+                { label: 'FHW Comprehensive Labs', amount: '$350' },
+                { label: 'Initial Consult', amount: '$300' }
+            ],
+            bullets: [
+                'Full functional panel review',
+                'Personalized root-cause findings',
+                'Custom protocol recommendations',
+                'Direct Q&A with your practitioner'
+            ],
+            advance: "I understand this is a cash-based practice",
+            stop: "Stop Here"
+        },
+        {
+            id: 'insurance',
+            label: 'Insurance',
+            title: "We don't accept insurance.",
+            body: "Functional medicine requires time and depth that insurance billing doesn't allow. To protect the quality of your care, we remain cash-based. <strong>HSA and FSA are accepted</strong>, but we do not bill insurance directly.",
+            advance: "I understand insurance is not accepted",
+            stop: "Stop Here"
+        },
+        {
+            id: 'labs-required',
+            label: 'Required Labs',
+            title: "FHW Labs are required.",
+            body: "Every client begins with our <strong>$350 comprehensive lab panel</strong>. This is non-negotiable — it's the foundation of every protocol we build. Without it, we can't offer accurate recommendations.",
+            advance: "I understand FHW labs ($350) are required",
+            stop: "Stop Here"
+        },
+        {
+            id: 'outside-labs',
+            label: 'Lab Policy',
+            title: "We use our own lab.",
+            body: "FHW partners with a dedicated lab to ensure the biomarkers we review meet our clinical standards. <strong>Outside labs are not accepted</strong>, even if recent. This keeps our analysis consistent and reliable.",
+            advance: "I understand outside labs are not accepted",
+            stop: "Stop Here"
+        },
+        {
+            id: 'consult-fee',
+            label: 'Consult Fee',
+            title: "The initial consult is $300.",
+            body: "Once your labs are complete, you'll sit down with your practitioner for a dedicated <strong>$300 initial consult</strong>. This is where your findings are translated into a personalized plan.",
+            advance: "I understand the initial consult is $300",
+            stop: "Stop Here"
+        },
+        {
+            id: 'services',
+            label: 'What We Help With',
+            title: "Does this apply to you?",
+            body: "Select at least <strong>3 areas</strong> you want support with. These represent the core of our practice.",
+            services: [
+                'Comprehensive lab analysis',
+                'Hormone optimization',
+                'Peptide education',
+                'Metabolic health',
+                'Fatigue & recovery',
+                'Nutrition & lifestyle'
+            ],
+            advance: "These apply to me",
+            stop: "Stop Here"
+        },
+        {
+            id: 'final',
+            label: 'Qualified',
+            title: "You're our ideal client.",
+            body: "You understand the process, the investment, and what we specialize in — and your needs align with our practice. The next step is your application.",
+            cta: "Begin Your Application"
+        }
+    ];
+
+    let current = 0;
+    let selectedServices = new Set();
+    const mount = document.getElementById('cardMount');
+
+    function updateProgress() {
+        const pct = Math.round((current / (TOTAL - 1)) * 100);
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('stepLabel').textContent = `Step ${current + 1} of ${TOTAL}`;
+        document.getElementById('stepPct').textContent = pct + '%';
+    }
+
+    function render(html) {
+        const existing = mount.firstElementChild;
+        if (existing) {
+            existing.classList.remove('enter');
+            existing.classList.add('exit');
+            setTimeout(() => {
+                mount.innerHTML = html;
+                mount.firstElementChild.classList.add('enter');
+                attachHandlers();
+                updateProgress();
+            }, 380);
+        } else {
+            mount.innerHTML = html;
+            mount.firstElementChild.classList.add('enter');
+            attachHandlers();
+            updateProgress();
+        }
+    }
+
+    function renderStep() {
+        const s = steps[current];
+        let body = '';
+
+        if (s.id === 'cost') {
+            body = `
+                <div class="callout">
+                    <div class="callout-title">Cash-Based Practice</div>
+                    ${s.pricing.map(p => `
+                        <div class="price-row">
+                            <span class="label">${p.label}</span>
+                            <span class="amount">${p.amount}</span>
+                        </div>
+                    `).join('')}
+                    <ul class="bullet-list">
+                        ${s.bullets.map(b => `<li>${b}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        } else if (s.id === 'services') {
+            body = `
+                <div class="service-grid">
+                    ${s.services.map((svc, i) => `
+                        <div class="service-card" data-service="${i}">${svc}</div>
+                    `).join('')}
+                </div>
+                <div class="selection-counter">
+                    Selected: <strong id="selCount">0</strong> / 3 minimum
+                </div>
+            `;
+        }
+
+        if (s.id === 'final') {
+            render(`
+                <div class="card congrats">
+                    <div class="step-label">${s.label}</div>
+                    <div class="icon-wrap">✓</div>
+                    <h1 class="q-title">${s.title}</h1>
+                    <p class="q-body">${s.body}</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="${APPLY_URL}">${s.cta}</a>
+                    </div>
+                </div>
+            `);
+            return;
+        }
+
+        const stopBtn = s.stop ? `<button class="btn btn-ghost" data-action="stop">${s.stop}</button>` : '';
+        const advanceDisabled = s.id === 'services' ? 'disabled' : '';
+
+        render(`
+            <div class="card">
+                <div class="step-label">${s.label}</div>
+                <h1 class="q-title">${s.title}</h1>
+                <p class="q-body">${s.body}</p>
+                ${body}
+                <div class="actions">
+                    <button class="btn btn-primary" data-action="advance" ${advanceDisabled}>${s.advance}</button>
+                    ${stopBtn}
+                </div>
+            </div>
+        `);
+    }
+
+    function renderDisqualify() {
+        const pctEl = document.getElementById('progressFill');
+        pctEl.style.background = 'linear-gradient(90deg, #78716c, #a8a29e)';
+        render(`
+            <div class="card disqualify">
+                <div class="step-label">Thank You</div>
+                <div class="icon-wrap">—</div>
+                <h1 class="q-title">This may not be the right fit.</h1>
+                <p class="q-body">We have a certain criteria for our clients — this program may not be the right fit at this time. We appreciate you taking the time to learn more about our practice.</p>
+                <div class="actions">
+                    <button class="btn btn-ghost" data-action="restart">Start Over</button>
+                    <a class="btn btn-ghost" href="inquiry.html#faq">See Our FAQ</a>
+                </div>
+            </div>
+        `);
+    }
+
+    function attachHandlers() {
+        const advanceBtn = mount.querySelector('[data-action="advance"]');
+        const stopBtn = mount.querySelector('[data-action="stop"]');
+        const restartBtn = mount.querySelector('[data-action="restart"]');
+        const serviceCards = mount.querySelectorAll('.service-card');
+
+        if (advanceBtn) {
+            advanceBtn.addEventListener('click', () => {
+                current = Math.min(current + 1, steps.length - 1);
+                renderStep();
+            });
+        }
+
+        if (stopBtn) {
+            stopBtn.addEventListener('click', renderDisqualify);
+        }
+
+        if (restartBtn) {
+            restartBtn.addEventListener('click', () => {
+                current = 0;
+                selectedServices.clear();
+                document.getElementById('progressFill').style.background =
+                    'linear-gradient(90deg, var(--brass-600), var(--brass-400))';
+                renderStep();
+            });
+        }
+
+        if (serviceCards.length) {
+            serviceCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const id = card.dataset.service;
+                    if (selectedServices.has(id)) {
+                        selectedServices.delete(id);
+                        card.classList.remove('selected');
+                    } else {
+                        selectedServices.add(id);
+                        card.classList.add('selected');
+                    }
+                    const count = selectedServices.size;
+                    document.getElementById('selCount').textContent = count;
+                    const btn = mount.querySelector('[data-action="advance"]');
+                    if (count >= 3) btn.removeAttribute('disabled');
+                    else btn.setAttribute('disabled', '');
+                });
+            });
+        }
+    }
+
+    renderStep();
+})();
+</script>
+</body>
+</html>

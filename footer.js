@@ -2,7 +2,7 @@
   var css = '\
     .footer { background: #204622; color: #b8d4bc; padding: 80px 20px 50px; }\
     .footer-content { max-width: 1200px; margin: 0 auto; }\
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 60px; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.1); }\
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.1); }\
     .footer-brand { margin-bottom: 25px; }\
     .footer-brand img { max-width: 150px; height: auto; }\
     .footer-description { font-size: 15px; line-height: 1.9; color: #b8d4bc; }\
@@ -13,8 +13,10 @@
     .footer-link:hover { color: #91bb99; padding-left: 5px; }\
     .footer-bottom { text-align: center; padding-top: 35px; }\
     .footer-copyright { font-size: 14px; color: #7a9c7e; }\
-    @media (max-width: 992px) { .footer-top { grid-template-columns: 1fr 1fr; } }\
+    @media (max-width: 992px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; } }\
     @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr; } }\
+    @media (min-width: 1921px) { .footer-content { max-width: 1600px; } .footer-description { font-size: 17px; } .footer-link { font-size: 17px; } .footer-column h4 { font-size: 17px; } .footer-brand img { max-width: 180px; } .footer-top { gap: 70px; } }\
+    @media (min-width: 2561px) { .footer-content { max-width: 2000px; } .footer { padding: 100px 20px 60px; } .footer-description { font-size: 19px; } .footer-link { font-size: 19px; } .footer-column h4 { font-size: 19px; } .footer-brand img { max-width: 200px; } .footer-top { gap: 80px; } .footer-copyright { font-size: 17px; } }\
   ';
 
   var style = document.createElement('style');
@@ -40,6 +42,7 @@
               <li><a href="index.html" class="footer-link">Home</a></li>\
               <li><a href="about.html" class="footer-link">About Us</a></li>\
               <li><a href="inquiry.html" class="footer-link">Inquiry</a></li>\
+              <li><a href="clients.html" class="footer-link">Client\'s Area</a></li>\
             </ul>\
           </div>\
           <div class="footer-column">\
@@ -47,6 +50,13 @@
             <ul class="footer-links">\
               <li><a href="https://apply.functionalhealthwarriors.org/350-page" class="footer-link">Sign Up</a></li>\
               <li><a href="inquiry.html" class="footer-link">Learn More</a></li>\
+            </ul>\
+          </div>\
+          <div class="footer-column">\
+            <h4>Client Portal</h4>\
+            <ul class="footer-links">\
+              <li><a href="https://apply.functionalhealthwarriors.org/re-order-medicine" class="footer-link">Medication Re-Order</a></li>\
+              <li><a href="#" class="footer-link">JANE Account</a></li>\
             </ul>\
           </div>\
         </div>\

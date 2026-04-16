@@ -321,7 +321,7 @@
             position: relative;
             z-index: 3;
             text-align: center;
-            padding: 60px 20px;
+            padding: 60px 20px 120px;
             max-width: 1000px;
             margin: 0 auto;
         }
@@ -339,9 +339,12 @@
             align-items: center;
         }
 
-        .nav-logo img {
-            max-width: 140px;
+.nav-logo img {
+            max-width: 110px;
             height: auto;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50px;
+            padding: 1px 5px;
         }
 
         .nav-links {
@@ -450,14 +453,18 @@
         .hero-cta-container {
             margin-top: 50px;
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
             animation: fadeInUp 1s ease 0.9s both;
         }
 
         .hero-cta-primary {
-            padding: 22px 55px;
+            flex: 1;
+            padding: 22px 20px;
             font-size: 18px;
             font-weight: 700;
             background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
@@ -472,6 +479,8 @@
             font-family: 'Montserrat', sans-serif;
             position: relative;
             overflow: hidden;
+            text-align: center;
+            text-decoration: none;
         }
 
         .hero-cta-primary::before {
@@ -498,7 +507,8 @@
         }
 
         .hero-cta-secondary {
-            padding: 22px 55px;
+            flex: 1;
+            padding: 22px 20px;
             font-size: 18px;
             font-weight: 700;
             background: transparent;
@@ -510,8 +520,34 @@
             transition: all 0.3s ease;
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            text-decoration: none;
         }
 
+        .hero-cta-tertiary {
+            flex-basis: 100%;
+            margin-top: 10px;
+            padding: 18px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            backdrop-filter: blur(4px);
+        }
+        .hero-cta-tertiary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
         .hero-cta-secondary:hover {
             background: #ffffff;
             color: #204622;
@@ -522,7 +558,7 @@
         /* LEVEL 10 FEATURE: Scroll Indicator */
         .scroll-indicator {
             position: absolute;
-            bottom: 40px;
+            bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
@@ -1796,6 +1832,9 @@
                 width: 100%;
                 max-width: 300px;
             }
+            .hero-cta-tertiary {
+                max-width: 300px;
+            }
 
             .benefits-grid,
             .pricing-grid,
@@ -1827,6 +1866,511 @@
                 font-size: 32px;
             }
         }
+        /* ============================================
+           LARGE SCREEN / 4K SCALING
+           ============================================ */
+
+        /* 2K / QHD monitors (1921px – 2560px) */
+        @media (min-width: 1921px) {
+            .container {
+                max-width: 1600px;
+            }
+            .hero-content {
+                max-width: 1200px;
+            }
+            .hero-headline {
+                font-size: 90px;
+            }
+            .hero-headline-accent {
+                font-size: 100px;
+            }
+            .hero-subheadline {
+                font-size: 30px;
+                max-width: 950px;
+            }
+            .hero-cta-primary,
+            .hero-cta-secondary {
+                font-size: 22px;
+                padding: 28px 65px;
+            }
+            .section {
+                padding: 150px 0;
+            }
+            .section-title {
+                font-size: 60px;
+            }
+            .section-subtitle {
+                font-size: 24px;
+                max-width: 1000px;
+            }
+            .stakes-content {
+                max-width: 1100px;
+            }
+            .stakes-headline {
+                font-size: 52px;
+            }
+            .stakes-body {
+                font-size: 22px;
+                padding: 70px;
+            }
+            .benefits-grid {
+                gap: 50px;
+            }
+            .benefit-card h3 {
+                font-size: 28px;
+            }
+            .benefit-card p {
+                font-size: 18px;
+            }
+            .benefit-card-image {
+                height: 320px;
+            }
+            .guide-layout {
+                grid-template-columns: 420px 1fr;
+                gap: 80px;
+            }
+            .guide-headline {
+                font-size: 46px;
+            }
+            .empathy-statement {
+                font-size: 22px;
+                padding: 60px;
+            }
+            .testimonial-container {
+                max-width: 1400px;
+            }
+            .testimonial-quote {
+                font-size: 28px;
+            }
+            .stat-number {
+                font-size: 44px;
+            }
+            .pricing-grid {
+                max-width: 1200px;
+                gap: 60px;
+            }
+            .tier-name {
+                font-size: 40px;
+            }
+            .tier-description {
+                font-size: 19px;
+            }
+            .steps-grid {
+                gap: 60px;
+            }
+            .step-title {
+                font-size: 30px;
+            }
+            .step-description {
+                font-size: 19px;
+            }
+            .step-number {
+                width: 120px;
+                height: 120px;
+                font-size: 52px;
+            }
+            .explanatory-content {
+                max-width: 1200px;
+            }
+            .explanatory-headline {
+                font-size: 56px;
+            }
+            .explanatory-text {
+                font-size: 22px;
+            }
+            .cta-banner h2 {
+                font-size: 58px;
+            }
+            .cta-banner p {
+                font-size: 24px;
+            }
+            .cta-banner-content {
+                max-width: 1000px;
+            }
+            .cta-button {
+                font-size: 22px;
+                padding: 26px 65px;
+            }
+            .lead-gen-section .section-title,
+            .lead-gen-section .section-subtitle {
+                font-size: inherit;
+            }
+            .nav-link {
+                font-size: 16px;
+            }
+            .nav-cta {
+                font-size: 15px;
+                padding: 14px 30px;
+            }
+            .sticky-cta-text {
+                font-size: 18px;
+            }
+            .sticky-cta-button {
+                font-size: 16px;
+                padding: 14px 40px;
+            }
+            .lead-gen-container {
+                max-width: 1450px;
+                gap: 100px;
+            }
+            .lead-gen-image {
+                height: 600px;
+                font-size: 26px;
+                padding: 60px;
+            }
+            .checklist-icon {
+                font-size: 110px;
+            }
+            .lead-gen-form {
+                padding: 65px 60px;
+            }
+            .form-title {
+                font-size: 36px;
+            }
+            .form-description {
+                font-size: 20px;
+            }
+            .form-label {
+                font-size: 15px;
+            }
+            .form-input {
+                padding: 22px;
+                font-size: 18px;
+            }
+            .submit-button {
+                padding: 24px;
+                font-size: 20px;
+            }
+            .video-container {
+                max-width: 1300px;
+            }
+            .video-title {
+                font-size: 48px;
+            }
+            .video-placeholder {
+                height: 730px;
+            }
+            .play-button {
+                width: 160px;
+                height: 160px;
+            }
+            .play-icon {
+                border-left-width: 42px;
+                border-top-width: 26px;
+                border-bottom-width: 26px;
+                margin-left: 14px;
+            }
+            .video-caption {
+                font-size: 20px;
+            }
+            .testimonial-author-avatar {
+                width: 75px;
+                height: 75px;
+            }
+            .sticky-cta-content {
+                max-width: 1600px;
+            }
+            .footer-content {
+                max-width: 1600px;
+            }
+            .footer-description {
+                font-size: 17px;
+            }
+            .footer-link {
+                font-size: 17px;
+            }
+        }
+
+        /* 4K monitors (2561px+) */
+        @media (min-width: 2561px) {
+            .container {
+                max-width: 2000px;
+            }
+            .hero-content {
+                max-width: 1500px;
+            }
+            .hero-headline {
+                font-size: 110px;
+            }
+            .hero-headline-accent {
+                font-size: 120px;
+            }
+            .hero-subheadline {
+                font-size: 36px;
+                max-width: 1100px;
+            }
+            .hero-cta-primary,
+            .hero-cta-secondary {
+                font-size: 26px;
+                padding: 32px 75px;
+            }
+            .section {
+                padding: 180px 0;
+            }
+            .section-title {
+                font-size: 72px;
+            }
+            .section-subtitle {
+                font-size: 28px;
+                max-width: 1200px;
+            }
+            .stakes-content {
+                max-width: 1400px;
+            }
+            .stakes-headline {
+                font-size: 64px;
+            }
+            .stakes-body {
+                font-size: 26px;
+                padding: 80px;
+            }
+            .benefits-grid {
+                gap: 60px;
+            }
+            .benefit-card h3 {
+                font-size: 34px;
+            }
+            .benefit-card p {
+                font-size: 22px;
+            }
+            .benefit-card-image {
+                height: 400px;
+            }
+            .benefit-card-content {
+                padding: 45px 50px 55px;
+            }
+            .benefit-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 44px;
+            }
+            .guide-layout {
+                grid-template-columns: 500px 1fr;
+                gap: 100px;
+            }
+            .guide-headline {
+                font-size: 56px;
+            }
+            .empathy-statement {
+                font-size: 26px;
+                padding: 70px;
+            }
+            .authority-title {
+                font-size: 22px;
+            }
+            .authority-item {
+                font-size: 20px;
+            }
+            .testimonial-container {
+                max-width: 1700px;
+            }
+            .testimonial-quote {
+                font-size: 32px;
+            }
+            .testimonial-author-info h4 {
+                font-size: 22px;
+            }
+            .stat-number {
+                font-size: 52px;
+            }
+            .stat-label {
+                font-size: 17px;
+            }
+            .pricing-grid {
+                max-width: 1500px;
+                gap: 70px;
+            }
+            .pricing-card {
+                padding: 70px 55px;
+            }
+            .tier-name {
+                font-size: 48px;
+            }
+            .tier-description {
+                font-size: 22px;
+            }
+            .pricing-note {
+                font-size: 20px;
+            }
+            .steps-grid {
+                gap: 70px;
+            }
+            .step-card {
+                padding: 70px 50px;
+            }
+            .step-title {
+                font-size: 34px;
+            }
+            .step-description {
+                font-size: 22px;
+            }
+            .step-number {
+                width: 140px;
+                height: 140px;
+                font-size: 60px;
+            }
+            .explanatory-content {
+                max-width: 1500px;
+            }
+            .explanatory-headline {
+                font-size: 68px;
+            }
+            .explanatory-text {
+                font-size: 26px;
+            }
+            .cta-banner {
+                padding: 240px 20px;
+            }
+            .cta-banner h2 {
+                font-size: 72px;
+            }
+            .cta-banner p {
+                font-size: 28px;
+            }
+            .cta-banner-content {
+                max-width: 1200px;
+            }
+            .cta-button {
+                font-size: 26px;
+                padding: 30px 75px;
+            }
+            .nav-link {
+                font-size: 18px;
+            }
+            .nav-cta {
+                font-size: 17px;
+                padding: 16px 35px;
+            }
+            .nav-logo img {
+                max-width: 180px;
+            }
+            .top-nav {
+                padding: 30px 60px;
+            }
+            .lead-gen-container {
+                max-width: 1800px;
+                gap: 120px;
+            }
+            .lead-gen-image {
+                height: 750px;
+                font-size: 32px;
+                padding: 70px;
+            }
+            .checklist-icon {
+                font-size: 130px;
+            }
+            .lead-gen-form {
+                padding: 75px 70px;
+            }
+            .form-title {
+                font-size: 42px;
+            }
+            .form-description {
+                font-size: 22px;
+            }
+            .form-label {
+                font-size: 17px;
+            }
+            .form-input {
+                padding: 24px;
+                font-size: 20px;
+            }
+            .submit-button {
+                padding: 28px;
+                font-size: 24px;
+            }
+            .video-container {
+                max-width: 1600px;
+            }
+            .video-title {
+                font-size: 58px;
+            }
+            .video-placeholder {
+                height: 900px;
+            }
+            .play-button {
+                width: 180px;
+                height: 180px;
+            }
+            .play-icon {
+                border-left-width: 50px;
+                border-top-width: 30px;
+                border-bottom-width: 30px;
+                margin-left: 16px;
+            }
+            .video-caption {
+                font-size: 22px;
+            }
+            .testimonial-author-avatar {
+                width: 90px;
+                height: 90px;
+            }
+            .social-proof-notification {
+                max-width: 480px;
+                padding: 25px 30px;
+            }
+            .social-proof-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 26px;
+            }
+            .social-proof-name {
+                font-size: 18px;
+            }
+            .social-proof-action {
+                font-size: 17px;
+            }
+            .chat-button {
+                width: 80px;
+                height: 80px;
+            }
+            .chat-icon {
+                width: 40px;
+                height: 40px;
+            }
+            .chat-popup {
+                width: 400px;
+                padding: 30px;
+            }
+            .chat-popup-header {
+                font-size: 22px;
+            }
+            .chat-popup-text {
+                font-size: 17px;
+            }
+            .sticky-cta-text {
+                font-size: 20px;
+            }
+            .sticky-cta-button {
+                font-size: 18px;
+                padding: 16px 45px;
+            }
+            .sticky-cta-content {
+                max-width: 2000px;
+            }
+            .footer {
+                padding: 100px 20px 60px;
+            }
+            .footer-content {
+                max-width: 2000px;
+            }
+            .footer-top {
+                gap: 80px;
+            }
+            .footer-brand img {
+                max-width: 200px;
+            }
+            .footer-description {
+                font-size: 19px;
+            }
+            .footer-column h4 {
+                font-size: 18px;
+            }
+            .footer-link {
+                font-size: 19px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1882,6 +2426,7 @@
             <div class="hero-cta-container">
                 <a href="https://apply.functionalhealthwarriors.org/350-page" class="hero-cta-primary">Sign Up</a>
                 <a href="inquiry.html" class="hero-cta-secondary">Learn More</a>
+                <a href="clients.html" class="hero-cta-tertiary">Client's Area</a>
             </div>
         </div>
 

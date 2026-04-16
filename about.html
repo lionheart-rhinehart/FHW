@@ -59,7 +59,13 @@
             justify-content: space-between;
             align-items: center;
         }
-        .nav-logo img { max-width: 140px; height: auto; }
+.nav-logo img {
+            max-width: 110px;
+            height: auto;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50px;
+            padding: 1px 5px;
+        }
         .nav-links {
             display: flex;
             gap: 30px;
@@ -138,7 +144,7 @@
             position: relative;
             z-index: 3;
             text-align: center;
-            padding: 60px 20px;
+            padding: 60px 20px 120px;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -168,12 +174,16 @@
         .hero-cta-container {
             margin-top: 50px;
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .hero-cta-primary {
-            padding: 22px 55px;
+            flex: 1;
+            padding: 22px 20px;
             font-size: 18px;
             font-weight: 700;
             background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
@@ -187,13 +197,15 @@
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
             text-decoration: none;
+            text-align: center;
         }
         .hero-cta-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 16px 45px rgba(145, 187, 153, 0.5);
         }
         .hero-cta-secondary {
-            padding: 22px 55px;
+            flex: 1;
+            padding: 22px 20px;
             font-size: 18px;
             font-weight: 700;
             background: transparent;
@@ -206,6 +218,30 @@
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
             text-decoration: none;
+            text-align: center;
+        }
+        .hero-cta-tertiary {
+            flex-basis: 100%;
+            padding: 18px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            backdrop-filter: blur(4px);
+        }
+        .hero-cta-tertiary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
         .hero-cta-secondary:hover {
             background: #ffffff;
@@ -215,7 +251,7 @@
         }
         .scroll-indicator {
             position: absolute;
-            bottom: 40px;
+            bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
@@ -482,6 +518,19 @@
         .testimonial-author-info p {
             font-size: 14px;
             color: var(--color-accent);
+        }
+        .testimonial-card.reversed {
+            grid-template-columns: 2fr 1fr;
+        }
+        .testimonial-card.reversed .testimonial-image {
+            order: 2;
+        }
+        .testimonial-card.reversed .testimonial-content {
+            order: 1;
+        }
+        .testimonial-card.reversed .testimonial-author {
+            justify-content: flex-end;
+            text-align: right;
         }
 
         /* SECTION 5: VALUES */
@@ -1075,7 +1124,9 @@
         /* Responsive */
         @media (max-width: 992px) {
             .hero-headline { font-size: 52px; }
-            .mission-grid, .testimonial-card { grid-template-columns: 1fr; }
+            .mission-grid, .testimonial-card, .testimonial-card.reversed { grid-template-columns: 1fr; }
+            .testimonial-card.reversed .testimonial-image { order: 1; }
+            .testimonial-card.reversed .testimonial-content { order: 2; }
             .pillars-grid { grid-template-columns: repeat(2, 1fr); }
             .pillar-card:not(:last-child)::after { display: none; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
@@ -1098,6 +1149,396 @@
             .timeline::before { left: 10px; }
             .timeline-dot { left: -30px; }
         }
+        /* ============================================
+           LARGE SCREEN / 4K SCALING
+           ============================================ */
+
+        /* 2K / QHD monitors (1921px – 2560px) */
+        @media (min-width: 1921px) {
+            :root {
+                --container-max-width: 1600px;
+                --section-padding: 150px 0;
+            }
+            .hero-content {
+                max-width: 1100px;
+            }
+            .hero-headline {
+                font-size: 90px;
+            }
+            .hero-subheadline {
+                font-size: 28px;
+                max-width: 900px;
+            }
+            .hero-cta-primary,
+            .hero-cta-secondary {
+                font-size: 22px;
+                padding: 28px 65px;
+            }
+            .section-title {
+                font-size: 60px;
+            }
+            .section-subtitle {
+                font-size: 24px;
+                max-width: 1000px;
+            }
+            .mission-content h2 {
+                font-size: 52px;
+            }
+            .mission-content p {
+                font-size: 22px;
+            }
+            .method-intro h2 {
+                font-size: 68px;
+            }
+            .method-intro p {
+                font-size: 24px;
+            }
+            .pillar-card h3 {
+                font-size: 24px;
+            }
+            .pillar-card ul li {
+                font-size: 15px;
+            }
+            .pillar-icon {
+                font-size: 56px;
+            }
+            .stats-bar {
+                padding: 70px 50px;
+            }
+            .stat-number {
+                font-size: 80px;
+            }
+            .stat-label {
+                font-size: 16px;
+            }
+            .testimonial-card {
+                padding: 60px;
+                gap: 60px;
+            }
+            .testimonial-quote {
+                font-size: 28px;
+            }
+            .testimonial-author-info h4 {
+                font-size: 22px;
+            }
+            .value-card h3 {
+                font-size: 26px;
+            }
+            .value-card p {
+                font-size: 18px;
+            }
+            .value-icon {
+                font-size: 56px;
+            }
+            .timeline {
+                max-width: 1000px;
+            }
+            .timeline-year {
+                font-size: 38px;
+            }
+            .timeline-content h3 {
+                font-size: 24px;
+            }
+            .timeline-content p {
+                font-size: 19px;
+            }
+            .team-grid {
+                max-width: 850px;
+                gap: 60px;
+            }
+            .faq-grid {
+                max-width: 1100px;
+            }
+            .faq-category {
+                font-size: 34px;
+            }
+            .faq-question {
+                font-size: 20px;
+            }
+            .faq-answer-inner {
+                font-size: 18px;
+            }
+            .cta-banner h2 {
+                font-size: 58px;
+            }
+            .cta-banner p {
+                font-size: 24px;
+            }
+            .cta-banner-content {
+                max-width: 1000px;
+            }
+            .cta-button {
+                font-size: 20px;
+                padding: 24px 60px;
+            }
+            .team-card h3 {
+                font-size: 24px;
+            }
+            .team-card p {
+                font-size: 16px;
+            }
+            .team-card::after {
+                font-size: 14px;
+            }
+            .modal-content {
+                max-width: 1050px;
+            }
+            .modal-header {
+                padding: 60px 60px 50px;
+            }
+            .modal-header-photo {
+                width: 160px;
+                height: 160px;
+            }
+            .modal-header-info h2 {
+                font-size: 36px;
+            }
+            .modal-body {
+                padding: 40px 50px;
+            }
+            .modal-body p {
+                font-size: 20px;
+            }
+            .hero-background-image img {
+                object-fit: cover;
+            }
+            .nav-link {
+                font-size: 16px;
+            }
+            .nav-cta {
+                font-size: 15px;
+                padding: 14px 30px;
+            }
+            .footer-content {
+                max-width: 1600px;
+            }
+            .footer-description {
+                font-size: 17px;
+            }
+            .footer-link {
+                font-size: 17px;
+            }
+        }
+
+        /* 4K monitors (2561px+) */
+        @media (min-width: 2561px) {
+            :root {
+                --container-max-width: 2000px;
+                --section-padding: 180px 0;
+            }
+            .hero-content {
+                max-width: 1400px;
+            }
+            .hero-headline {
+                font-size: 110px;
+            }
+            .hero-subheadline {
+                font-size: 34px;
+                max-width: 1100px;
+            }
+            .hero-cta-primary,
+            .hero-cta-secondary {
+                font-size: 26px;
+                padding: 32px 75px;
+            }
+            .section-title {
+                font-size: 72px;
+            }
+            .section-subtitle {
+                font-size: 28px;
+                max-width: 1200px;
+            }
+            .mission-content h2 {
+                font-size: 64px;
+            }
+            .mission-content p {
+                font-size: 26px;
+            }
+            .mission-grid {
+                gap: 80px;
+            }
+            .method-intro h2 {
+                font-size: 84px;
+            }
+            .method-intro p {
+                font-size: 28px;
+            }
+            .pillar-card {
+                padding: 50px 30px;
+            }
+            .pillar-card h3 {
+                font-size: 28px;
+            }
+            .pillar-card h4 {
+                font-size: 17px;
+            }
+            .pillar-card ul li {
+                font-size: 17px;
+            }
+            .pillar-icon {
+                font-size: 64px;
+            }
+            .stats-bar {
+                padding: 80px 60px;
+                gap: 50px;
+            }
+            .stat-number {
+                font-size: 96px;
+            }
+            .stat-label {
+                font-size: 18px;
+            }
+            .testimonial-card {
+                padding: 70px;
+                gap: 70px;
+            }
+            .testimonial-quote {
+                font-size: 32px;
+            }
+            .testimonial-author-info h4 {
+                font-size: 24px;
+            }
+            .testimonial-author-info p {
+                font-size: 17px;
+            }
+            .testimonial-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            .value-card {
+                padding: 50px 40px;
+            }
+            .value-card h3 {
+                font-size: 30px;
+            }
+            .value-card p {
+                font-size: 20px;
+            }
+            .value-icon {
+                font-size: 72px;
+            }
+            .timeline {
+                max-width: 1200px;
+                padding-left: 70px;
+            }
+            .timeline-year {
+                font-size: 44px;
+            }
+            .timeline-content h3 {
+                font-size: 28px;
+            }
+            .timeline-content p {
+                font-size: 22px;
+            }
+            .team-grid {
+                max-width: 1000px;
+                gap: 70px;
+            }
+            .faq-grid {
+                max-width: 1400px;
+            }
+            .faq-category {
+                font-size: 40px;
+            }
+            .faq-question {
+                font-size: 24px;
+                padding: 30px 70px 30px 40px;
+            }
+            .faq-answer-inner {
+                font-size: 20px;
+                padding: 0 40px 35px;
+            }
+            .faq-cta-box p {
+                font-size: 24px;
+            }
+            .cta-banner {
+                padding: 240px 20px;
+            }
+            .cta-banner h2 {
+                font-size: 72px;
+            }
+            .cta-banner p {
+                font-size: 28px;
+            }
+            .cta-banner-content {
+                max-width: 1200px;
+            }
+            .cta-button {
+                font-size: 24px;
+                padding: 28px 70px;
+            }
+            .nav-link {
+                font-size: 18px;
+            }
+            .nav-cta {
+                font-size: 17px;
+                padding: 16px 35px;
+            }
+            .nav-logo img {
+                max-width: 180px;
+            }
+            .top-nav {
+                padding: 30px 60px;
+            }
+            .footer {
+                padding: 100px 20px 60px;
+            }
+            .footer-content {
+                max-width: 2000px;
+            }
+            .footer-top {
+                gap: 80px;
+            }
+            .footer-brand img {
+                max-width: 200px;
+            }
+            .footer-description {
+                font-size: 19px;
+            }
+            .footer-column h4 {
+                font-size: 18px;
+            }
+            .footer-link {
+                font-size: 19px;
+            }
+            .team-card h3 {
+                font-size: 28px;
+            }
+            .team-card p {
+                font-size: 18px;
+            }
+            .team-card::after {
+                font-size: 15px;
+            }
+            .modal-content {
+                max-width: 1200px;
+            }
+            .modal-header {
+                padding: 70px 70px 60px;
+                gap: 40px;
+            }
+            .modal-header-photo {
+                width: 180px;
+                height: 180px;
+            }
+            .modal-header-info h2 {
+                font-size: 42px;
+            }
+            .modal-body {
+                padding: 50px 60px;
+            }
+            .modal-body p {
+                font-size: 22px;
+            }
+            .modal-close {
+                width: 50px;
+                height: 50px;
+            }
+            .hero-background-image img {
+                object-fit: cover;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1126,6 +1567,7 @@
             <div class="hero-cta-container">
                 <a href="https://apply.functionalhealthwarriors.org/350-page" class="hero-cta-primary">Sign Up</a>
                 <a href="inquiry.html" class="hero-cta-secondary">Learn More</a>
+                <a href="clients.html" class="hero-cta-tertiary">Client's Area</a>
             </div>
         </div>
 
@@ -1384,14 +1826,26 @@
                 <div class="testimonial-content">
                     <p class="testimonial-quote">When you stop guessing and start testing, everything changes. Down 30 lbs, sleeping better, performing better, and leaner than I was in my 20s.</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">
-                            <img src="fhw creative/582117153_18541397230059885_3029920338913482829_n.jpg" alt="DJ Jacobucci">
-                        </div>
                         <div class="testimonial-author-info">
                             <h4>DJ Jacobucci</h4>
                             <p>Owner, Upgraded Industries</p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reversed" style="margin-top: 40px;">
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">My fatigue is manageable. I can workout again without pain. I feel like myself again in my body.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <h4>@wildheartpoettongue</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-image">
+                    <img src="fhw creative/fhw-testimonials/4.png" alt="Client testimonial">
                 </div>
             </div>
         </div>
@@ -1778,6 +2232,11 @@
                 </div>
 
             </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="inquiry.html" class="cta-button">Sign Up Here When You Are Ready</a>
+            </div>
+
         </div>
     </section>
 
@@ -1951,6 +2410,61 @@
                 }
             });
         });
+    </script>
+
+    <!-- Chat Widget -->
+    <style>
+        .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1001; }
+        .chat-button { width: 60px; height: 60px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; border: 2px solid #91bb99; }
+        .chat-button:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(145,187,153,0.3); }
+        .chat-icon { width: 30px; height: 30px; fill: #204622; }
+        .chat-popup { position: absolute; bottom: 80px; right: 0; width: 320px; background: #ffffff; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); padding: 25px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; border: 2px solid #91bb99; }
+        .chat-popup.active { opacity: 1; visibility: visible; transform: translateY(0); }
+        .chat-popup-header { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: #204622; margin-bottom: 12px; }
+        .chat-popup-text { font-size: 14px; color: #2c3e50; line-height: 1.6; margin-bottom: 18px; }
+        .chat-popup-link { display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #204622 0%, #41664c 100%); color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; transition: all 0.3s ease; text-align: center; width: 100%; box-sizing: border-box; }
+        .chat-popup-link:hover { background: linear-gradient(135deg, #41664c 0%, #204622 100%); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(32,70,34,0.3); }
+        .chat-close { position: absolute; top: 15px; right: 15px; width: 24px; height: 24px; cursor: pointer; opacity: 0.6; transition: opacity 0.3s ease; }
+        .chat-close:hover { opacity: 1; }
+        .chat-close::before, .chat-close::after { content: ''; position: absolute; width: 16px; height: 2px; background: #2c3e50; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); }
+        .chat-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+        @media (min-width: 2561px) {
+            .chat-button { width: 80px; height: 80px; }
+            .chat-icon { width: 40px; height: 40px; }
+            .chat-popup { width: 400px; padding: 30px; }
+            .chat-popup-header { font-size: 22px; }
+            .chat-popup-text { font-size: 17px; }
+        }
+    </style>
+    <div class="chat-widget">
+        <div class="chat-button" id="chatButton">
+            <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                <circle cx="12" cy="10" r="1.5"/>
+                <circle cx="8" cy="10" r="1.5"/>
+                <circle cx="16" cy="10" r="1.5"/>
+            </svg>
+        </div>
+        <div class="chat-popup" id="chatPopup">
+            <div class="chat-close" id="chatClose"></div>
+            <div class="chat-popup-header">Have Questions?</div>
+            <div class="chat-popup-text">
+                We're here to help you on your health journey. Click below to submit your inquiry and our clinical team will respond promptly.
+            </div>
+            <a href="https://apply.functionalhealthwarriors.org/sign-up" class="chat-popup-link" target="_blank">Submit an Inquiry</a>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var btn = document.getElementById('chatButton');
+            var pop = document.getElementById('chatPopup');
+            var close = document.getElementById('chatClose');
+            btn.addEventListener('click', function () { pop.classList.toggle('active'); });
+            close.addEventListener('click', function (e) { e.stopPropagation(); pop.classList.remove('active'); });
+            document.addEventListener('click', function (e) {
+                if (!btn.contains(e.target) && !pop.contains(e.target)) pop.classList.remove('active');
+            });
+        })();
     </script>
 </body>
 </html>

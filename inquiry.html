@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn More | Functional Health Warriors</title>
     <link rel="icon" type="image/png" href="fhw creative/fhw-icon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --color-primary-dark: #204622;
@@ -49,7 +49,13 @@
             justify-content: space-between;
             align-items: center;
         }
-        .nav-logo img { max-width: 140px; height: auto; }
+        .nav-logo img {
+            max-width: 110px;
+            height: auto;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50px;
+            padding: 1px 5px;
+        }
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-link {
             color: #ffffff;
@@ -94,7 +100,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
+            object-position: center 25%;
             z-index: 1;
         }
         .hero-overlay {
@@ -107,7 +113,7 @@
             position: relative;
             z-index: 3;
             text-align: center;
-            padding: 60px 20px;
+            padding: 60px 20px 120px;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -135,10 +141,89 @@
             line-height: 1.7;
         }
 
+        /* Hero Buttons */
+        .hero-cta-container {
+            margin-top: 50px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-cta-primary {
+            flex: 1;
+            padding: 22px 20px;
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #91bb99 0%, #a8cbb0 100%);
+            color: #204622;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 12px 35px rgba(145, 187, 153, 0.4);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            text-align: center;
+        }
+        .hero-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 45px rgba(145, 187, 153, 0.5);
+        }
+        .hero-cta-secondary {
+            flex: 1;
+            padding: 22px 20px;
+            font-size: 18px;
+            font-weight: 700;
+            background: transparent;
+            color: #ffffff;
+            border: 3px solid #ffffff;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            text-align: center;
+        }
+        .hero-cta-secondary:hover {
+            background: #ffffff;
+            color: #204622;
+            transform: translateY(-3px);
+        }
+        .hero-cta-tertiary {
+            flex-basis: 100%;
+            padding: 18px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            backdrop-filter: blur(4px);
+        }
+        .hero-cta-tertiary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
         /* Scroll Indicator */
         .scroll-indicator {
             position: absolute;
-            bottom: 40px;
+            bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
@@ -185,10 +270,24 @@
 
         /* Infographics Placeholder Section */
         .infographics-section {
-            padding: 120px 0;
+            padding: 0;
             background: linear-gradient(135deg, #f8faf8 0%, #e9f0ea 100%);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
+        }
+        .infographic-sticky-wrap {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .infographic-sticky-wrap > .container {
+            max-width: 960px;
+            width: 100%;
         }
         .infographics-section::before {
             content: '';
@@ -220,28 +319,54 @@
             margin: 0 auto 50px;
             line-height: 1.7;
         }
-        .infographics-placeholder {
-            border: 3px dashed var(--color-primary-light);
+        .infographic-scroll-container {
             border-radius: 16px;
-            padding: 80px 40px;
-            background: rgba(255, 255, 255, 0.7);
-            max-width: 900px;
+            max-width: 100%;
+            height: 70vh;
             margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #d4d0c8;
+            background: #E8DFD0;
         }
-        .placeholder-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
+        /* Infographic internal styles */
+        .ig-paper-texture {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            mix-blend-mode: multiply;
         }
-        .placeholder-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--color-primary-dark);
-            margin-bottom: 10px;
+        .ig-content-layer { position: relative; z-index: 10; }
+        .ig-divider-line { display: flex; align-items: center; text-align: center; }
+        .ig-divider-line::before, .ig-divider-line::after {
+            content: ''; flex: 1; border-bottom: 1px solid rgba(26, 28, 26, 0.15);
         }
-        .placeholder-text {
-            font-size: 16px;
-            color: #888;
+        .ig-divider-line:not(:empty)::before { margin-right: 1.5em; }
+        .ig-divider-line:not(:empty)::after { margin-left: 1.5em; }
+        .ig-wrapper {
+            font-family: 'Montserrat', sans-serif;
+            color: #1A1C1A;
+            -webkit-font-smoothing: antialiased;
         }
+        .ig-wrapper * { box-sizing: border-box; margin: 0; padding: 0; }
+        .ig-font-serif { font-family: 'Cormorant Garamond', serif; }
+        /* Infographic color tokens */
+        .ig-bg-sage-900 { background-color: #1C2920; }
+        .ig-bg-sage-800 { background-color: rgba(42, 63, 50, 0.5); }
+        .ig-bg-cream-100 { background-color: #FDFBF7; }
+        .ig-bg-cream-200 { background-color: #F4EFE6; }
+        .ig-text-cream-100 { color: #FDFBF7; }
+        .ig-text-cream-200 { color: #F4EFE6; }
+        .ig-text-brass-400 { color: #D4B88B; }
+        .ig-text-brass-500 { color: #C5A880; }
+        .ig-text-brass-600 { color: #A38A66; }
+        .ig-text-charcoal { color: #1A1C1A; }
+        .ig-border-brass { border-color: #C5A880; }
+        .ig-border-stone { border-color: #d6d3d1; }
+        .ig-border-cream { border-color: #E8DFD0; }
 
         /* FAQ Section */
         .faq-section {
@@ -467,14 +592,189 @@
             .form-title { font-size: 38px; }
             .ready-headline { font-size: 38px; }
             .form-wrapper { padding: 15px; }
-            .infographics-placeholder { padding: 50px 25px; }
+            .infographic-scroll-container { height: 70vh; }
             .top-nav { padding: 15px 20px; }
             .nav-logo img { max-width: 110px; }
-            .infographics-section,
             .faq-section { padding: 80px 0; }
             .form-section { padding: 60px 0; }
             .ready-section { padding: 70px 0; }
         }
+        /* ============================================
+           LARGE SCREEN / 4K SCALING
+           ============================================ */
+
+        /* 2K / QHD monitors (1921px – 2560px) */
+        @media (min-width: 1921px) {
+            .container {
+                max-width: 1600px;
+            }
+            .hero-content {
+                max-width: 1100px;
+            }
+            .hero-headline {
+                font-size: 90px;
+            }
+            .hero-subheadline {
+                font-size: 28px;
+                max-width: 900px;
+            }
+            .section-title {
+                font-size: 52px;
+            }
+            .section-subtitle {
+                font-size: 22px;
+                max-width: 800px;
+            }
+            .infographic-sticky-wrap > .container {
+                max-width: 1200px;
+            }
+            .infographic-scroll-container {
+                height: 75vh;
+            }
+            .faq-section {
+                padding: 150px 0;
+            }
+            .faq-grid {
+                max-width: 1100px;
+            }
+            .faq-category {
+                font-size: 34px;
+            }
+            .faq-question {
+                font-size: 20px;
+            }
+            .faq-answer-inner {
+                font-size: 18px;
+            }
+            .form-section {
+                padding: 100px 0;
+            }
+            .form-content {
+                max-width: 900px;
+            }
+            .form-title {
+                font-size: 64px;
+            }
+            .form-subtitle {
+                font-size: 22px;
+                max-width: 700px;
+            }
+            .form-wrapper iframe {
+                height: 600px;
+            }
+            .ready-section {
+                padding: 130px 0;
+            }
+            .ready-headline {
+                font-size: 64px;
+            }
+            .ready-text {
+                font-size: 24px;
+                max-width: 800px;
+            }
+            .ready-cta {
+                font-size: 22px;
+                padding: 26px 65px;
+            }
+            .nav-link {
+                font-size: 16px;
+            }
+            .nav-cta {
+                font-size: 15px;
+                padding: 14px 30px;
+            }
+        }
+
+        /* 4K monitors (2561px+) */
+        @media (min-width: 2561px) {
+            .container {
+                max-width: 2000px;
+            }
+            .hero-content {
+                max-width: 1400px;
+            }
+            .hero-headline {
+                font-size: 110px;
+            }
+            .hero-subheadline {
+                font-size: 34px;
+                max-width: 1100px;
+            }
+            .section-title {
+                font-size: 64px;
+            }
+            .section-subtitle {
+                font-size: 26px;
+                max-width: 1000px;
+            }
+            .infographic-sticky-wrap > .container {
+                max-width: 1500px;
+            }
+            .infographic-scroll-container {
+                height: 80vh;
+            }
+            .faq-section {
+                padding: 180px 0;
+            }
+            .faq-grid {
+                max-width: 1400px;
+            }
+            .faq-category {
+                font-size: 40px;
+            }
+            .faq-question {
+                font-size: 24px;
+                padding: 30px 70px 30px 40px;
+            }
+            .faq-answer-inner {
+                font-size: 20px;
+                padding: 0 40px 35px;
+            }
+            .form-section {
+                padding: 120px 0;
+            }
+            .form-content {
+                max-width: 1100px;
+            }
+            .form-title {
+                font-size: 78px;
+            }
+            .form-subtitle {
+                font-size: 26px;
+                max-width: 850px;
+            }
+            .form-wrapper iframe {
+                height: 700px;
+            }
+            .ready-section {
+                padding: 160px 0;
+            }
+            .ready-headline {
+                font-size: 78px;
+            }
+            .ready-text {
+                font-size: 28px;
+                max-width: 900px;
+            }
+            .ready-cta {
+                font-size: 26px;
+                padding: 30px 75px;
+            }
+            .nav-link {
+                font-size: 18px;
+            }
+            .nav-cta {
+                font-size: 17px;
+                padding: 16px 35px;
+            }
+            .nav-logo img {
+                max-width: 180px;
+            }
+            .top-nav {
+                padding: 30px 60px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -507,7 +807,8 @@
     </section>
 
     <!-- Infographics Placeholder Section -->
-    <section class="infographics-section">
+    <section class="infographics-section" id="infographics-section">
+        <div class="infographic-sticky-wrap">
         <div class="container">
             <div class="infographics-content">
                 <h2 class="section-title">
@@ -515,12 +816,135 @@
                 </h2>
                 <p class="section-subtitle">Visual breakdowns of how our approach works and why it gets results.</p>
 
-                <div class="infographics-placeholder">
-                    <div class="placeholder-icon">&#128202;</div>
-                    <p class="placeholder-title">Infographics Coming Soon</p>
-                    <p class="placeholder-text">This section will host visual guides and infographics to help you understand the Functional Warrior Method.</p>
+                <div class="infographic-scroll-container">
+                    <div class="ig-wrapper" style="position:relative;">
+                        <div class="ig-paper-texture"></div>
+
+                        <!-- SECTION 1: THE HOOK -->
+                        <section class="ig-bg-sage-900 ig-text-cream-100 ig-content-layer" style="min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;">
+                            <div style="padding:48px 32px;">
+                            <h3 class="ig-font-serif" style="font-size:2.2rem;font-weight:500;letter-spacing:0.03em;margin-bottom:18px;">
+                                From <em class="ig-text-brass-400">Surviving</em> <span style="margin:0 4px;">→</span> To Living
+                            </h3>
+                            <p style="font-size:1.1rem;font-weight:300;margin-bottom:10px;" class="ig-text-cream-200">
+                                You've been told your labs are "normal"...<br>
+                                <strong style="font-weight:500;color:#fff;">but you don't feel normal.</strong>
+                            </p>
+                            <p style="font-size:0.85rem;font-weight:300;margin-bottom:24px;opacity:0.65;">
+                                Or—you're doing everything right... and still not getting results.
+                            </p>
+                            <div style="display:inline-block;border:1px solid #C5A880;border-radius:9999px;padding:8px 28px;" class="ig-bg-sage-800">
+                                <span class="ig-font-serif ig-text-brass-400" style="font-size:1.15rem;font-style:italic;">Something is being missed.</span>
+                            </div>
+                            </div>
+                        </section>
+
+                        <!-- SECTION 2: THE PROBLEM -->
+                        <section class="ig-bg-cream-200 ig-content-layer" style="padding:40px 32px;text-align:center;border-bottom:1px solid #E8DFD0;">
+                            <h3 class="ig-font-serif" style="font-size:1.7rem;font-weight:700;margin-bottom:6px;">Why This Happens</h3>
+                            <p style="font-size:0.75rem;font-weight:300;color:#78716c;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:28px;">Most clinics treat one isolated piece.</p>
+
+                            <div style="display:flex;justify-content:center;gap:28px;margin-bottom:28px;">
+                                <div style="display:flex;flex-direction:column;align-items:center;">
+                                    <div style="width:48px;height:48px;border-radius:50%;border:1px solid #C5A880;display:flex;align-items:center;justify-content:center;margin-bottom:10px;" class="ig-bg-cream-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A38A66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 3.5 2.1 6.4 5 7.7V20a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-2.3c2.9-1.3 5-4.2 5-7.7a8 8 0 0 0-8-8z"/><path d="M12 2v4"/><path d="m8 4 2.5 2.5"/><path d="m16 4-2.5 2.5"/></svg>
+                                    </div>
+                                    <span class="ig-font-serif" style="font-weight:700;font-size:1.05rem;">Stress</span>
+                                </div>
+                                <div style="display:flex;flex-direction:column;align-items:center;">
+                                    <div style="width:48px;height:48px;border-radius:50%;border:1px solid #C5A880;display:flex;align-items:center;justify-content:center;margin-bottom:10px;" class="ig-bg-cream-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A38A66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                    </div>
+                                    <span class="ig-font-serif" style="font-weight:700;font-size:1.05rem;">Metabolism</span>
+                                </div>
+                                <div style="display:flex;flex-direction:column;align-items:center;">
+                                    <div style="width:48px;height:48px;border-radius:50%;border:1px solid #C5A880;display:flex;align-items:center;justify-content:center;margin-bottom:10px;" class="ig-bg-cream-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A38A66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                                    </div>
+                                    <span class="ig-font-serif" style="font-weight:700;font-size:1.05rem;">Hormones</span>
+                                </div>
+                            </div>
+
+                            <div class="ig-divider-line" style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:#78716c;font-weight:500;max-width:420px;margin:0 auto;">
+                                Your body doesn't work in isolation—and neither do we.
+                            </div>
+                        </section>
+
+                        <!-- SECTION 3: THE DIFFERENCE -->
+                        <section class="ig-bg-cream-100 ig-content-layer" style="padding:48px 32px;text-align:center;">
+                            <h3 class="ig-font-serif" style="font-size:1.7rem;font-weight:700;margin-bottom:18px;">This Is Not Your Routine Physical</h3>
+
+                            <p style="font-size:0.9rem;font-weight:300;color:#44403c;max-width:420px;margin:0 auto 18px;line-height:1.7;">
+                                We use comprehensive <strong style="font-weight:500;color:#1A1C1A;">functional lab work</strong> to look deeper than standard care. We assess adrenals, metabolism, thyroid, and hormones to identify dysfunction—<strong style="font-weight:500;color:#1A1C1A;">not just disease.</strong>
+                            </p>
+
+                            <p class="ig-font-serif" style="font-size:1.25rem;font-weight:700;max-width:420px;margin:0 auto 18px;line-height:1.4;">
+                                Insurance labs look for problems.<br>
+                                <span class="ig-text-brass-600">We look for why your body isn't performing.</span>
+                            </p>
+
+                            <p style="font-size:0.75rem;font-weight:300;color:#78716c;">
+                                The 6-Month Shortcut: We connect the dots all at once.
+                            </p>
+                        </section>
+
+                        <!-- SECTION 4: THE PROCESS -->
+                        <section class="ig-bg-cream-200 ig-content-layer" style="padding:44px 32px;text-align:center;border-top:1px solid #E8DFD0;">
+                            <h3 class="ig-font-serif" style="font-size:1.7rem;font-weight:700;margin-bottom:32px;">The Functional Warrior Method™</h3>
+
+                            <div style="display:flex;flex-direction:column;align-items:center;gap:12px;max-width:420px;margin:0 auto 36px;">
+                                <div style="display:flex;align-items:center;gap:8px;padding:8px 20px;border-radius:9999px;border:1px solid #d6d3d1;" class="ig-bg-cream-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1C1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                                    <span class="ig-font-serif" style="font-weight:700;font-size:1.05rem;">Discover</span>
+                                    <span style="font-size:0.7rem;color:#78716c;font-weight:300;margin-left:4px;">Root Cause Labs</span>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a8a29e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                                <div style="display:flex;align-items:center;gap:8px;padding:8px 20px;border-radius:9999px;border:1px solid #d6d3d1;" class="ig-bg-cream-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1C1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                                    <span class="ig-font-serif" style="font-weight:700;font-size:1.05rem;">Restore</span>
+                                    <span style="font-size:0.7rem;color:#78716c;font-weight:300;margin-left:4px;">Sleep & Stress</span>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a8a29e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                                <div style="display:flex;align-items:center;gap:8px;padding:8px 20px;border-radius:9999px;border:1px solid #d6d3d1;" class="ig-bg-cream-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1C1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                                    <span class="ig-font-serif" style="font-weight:700;font-size:1.05rem;">Fuel</span>
+                                    <span style="font-size:0.7rem;color:#78716c;font-weight:300;margin-left:4px;">Nutrition & Supps</span>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a8a29e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                                <div style="display:flex;align-items:center;gap:8px;padding:8px 20px;border-radius:9999px;border:1px solid #d6d3d1;" class="ig-bg-cream-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1C1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                    <span class="ig-font-serif" style="font-weight:700;font-size:1.05rem;">Optimize</span>
+                                    <span style="font-size:0.7rem;color:#78716c;font-weight:300;margin-left:4px;">Hormones & Peptides</span>
+                                </div>
+                            </div>
+
+                            <!-- Getting Started Flow -->
+                            <div class="ig-divider-line ig-font-serif" style="font-size:1.4rem;font-weight:700;margin-bottom:24px;max-width:420px;margin-left:auto;margin-right:auto;">
+                                Getting Started
+                            </div>
+
+                            <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;max-width:420px;margin:0 auto;font-size:0.85rem;font-weight:500;padding:12px 20px;border-radius:8px;border:1px solid #d6d3d1;" class="ig-bg-cream-100">
+                                <span style="color:#1c1917;">Labs</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                <span style="color:#1c1917;">Review</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                <span style="color:#1c1917;">Plan</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                <span style="color:#1c1917;">Support</span>
+                            </div>
+                        </section>
+
+                        <!-- SECTION 5: CTA -->
+                        <section class="ig-bg-sage-900 ig-text-cream-100 ig-content-layer" style="min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;">
+                            <div>
+                                <h3 class="ig-font-serif" style="font-size:2.2rem;font-weight:700;margin-bottom:10px;">You don't need more guesswork.</h3>
+                                <h3 class="ig-font-serif ig-text-brass-400" style="font-size:2.2rem;font-weight:700;font-style:italic;">You need answers.</h3>
+                            </div>
+                        </section>
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -908,6 +1332,15 @@
         </div>
     </section>
 
+        <!-- Feeling Ready Section -->
+    <section class="ready-section">
+        <div class="container">
+            <h2 class="ready-headline">Feeling Ready?</h2>
+            <p class="ready-text">Skip the inquiry and head straight to the payment page to get your comprehensive lab work started.</p>
+            <a href="https://apply.functionalhealthwarriors.org/350-page" class="ready-cta">Proceed to Sign Up</a>
+        </div>
+    </section>
+
     <!-- Inquiry Form Section -->
     <section class="form-section">
         <div class="container">
@@ -936,15 +1369,6 @@
                     ></iframe>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Feeling Ready Section -->
-    <section class="ready-section">
-        <div class="container">
-            <h2 class="ready-headline">Feeling Ready?</h2>
-            <p class="ready-text">Skip the inquiry and head straight to the payment page to get your comprehensive lab work started.</p>
-            <a href="https://apply.functionalhealthwarriors.org/350-page" class="ready-cta">Proceed to Sign Up</a>
         </div>
     </section>
 
@@ -1001,6 +1425,96 @@
                 }
                 if (checks > 60) clearInterval(interval);
             }, 500);
+        })();
+    </script>
+
+    <!-- Infographic scroll-trapping -->
+    <script>
+    (function() {
+        var section = document.getElementById('infographics-section');
+        var scrollBox = section.querySelector('.infographic-scroll-container');
+        if (!section || !scrollBox) return;
+
+        // Set section height = viewport + scrollable content so page "stalls" here
+        function setSectionHeight() {
+            var scrollableAmount = scrollBox.scrollHeight - scrollBox.clientHeight;
+            section.style.height = (window.innerHeight + scrollableAmount) + 'px';
+        }
+        setSectionHeight();
+        window.addEventListener('resize', setSectionHeight);
+
+        // On page scroll, translate page scroll position into infographic scroll
+        var ticking = false;
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    var rect = section.getBoundingClientRect();
+                    var scrollableAmount = scrollBox.scrollHeight - scrollBox.clientHeight;
+                    var progress = -rect.top;
+                    if (progress < 0) progress = 0;
+                    if (progress > scrollableAmount) progress = scrollableAmount;
+                    scrollBox.scrollTop = progress;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+    </script>
+
+    <!-- Chat Widget -->
+    <style>
+        .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1001; }
+        .chat-button { width: 60px; height: 60px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; border: 2px solid #91bb99; }
+        .chat-button:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(145,187,153,0.3); }
+        .chat-icon { width: 30px; height: 30px; fill: #204622; }
+        .chat-popup { position: absolute; bottom: 80px; right: 0; width: 320px; background: #ffffff; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); padding: 25px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; border: 2px solid #91bb99; }
+        .chat-popup.active { opacity: 1; visibility: visible; transform: translateY(0); }
+        .chat-popup-header { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: #204622; margin-bottom: 12px; }
+        .chat-popup-text { font-size: 14px; color: #2c3e50; line-height: 1.6; margin-bottom: 18px; }
+        .chat-popup-link { display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #204622 0%, #41664c 100%); color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px; transition: all 0.3s ease; text-align: center; width: 100%; box-sizing: border-box; }
+        .chat-popup-link:hover { background: linear-gradient(135deg, #41664c 0%, #204622 100%); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(32,70,34,0.3); }
+        .chat-close { position: absolute; top: 15px; right: 15px; width: 24px; height: 24px; cursor: pointer; opacity: 0.6; transition: opacity 0.3s ease; }
+        .chat-close:hover { opacity: 1; }
+        .chat-close::before, .chat-close::after { content: ''; position: absolute; width: 16px; height: 2px; background: #2c3e50; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); }
+        .chat-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+        @media (min-width: 2561px) {
+            .chat-button { width: 80px; height: 80px; }
+            .chat-icon { width: 40px; height: 40px; }
+            .chat-popup { width: 400px; padding: 30px; }
+            .chat-popup-header { font-size: 22px; }
+            .chat-popup-text { font-size: 17px; }
+        }
+    </style>
+    <div class="chat-widget">
+        <div class="chat-button" id="chatButton">
+            <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                <circle cx="12" cy="10" r="1.5"/>
+                <circle cx="8" cy="10" r="1.5"/>
+                <circle cx="16" cy="10" r="1.5"/>
+            </svg>
+        </div>
+        <div class="chat-popup" id="chatPopup">
+            <div class="chat-close" id="chatClose"></div>
+            <div class="chat-popup-header">Have Questions?</div>
+            <div class="chat-popup-text">
+                We're here to help you on your health journey. Click below to submit your inquiry and our clinical team will respond promptly.
+            </div>
+            <a href="https://apply.functionalhealthwarriors.org/sign-up" class="chat-popup-link" target="_blank">Submit an Inquiry</a>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var btn = document.getElementById('chatButton');
+            var pop = document.getElementById('chatPopup');
+            var close = document.getElementById('chatClose');
+            btn.addEventListener('click', function () { pop.classList.toggle('active'); });
+            close.addEventListener('click', function (e) { e.stopPropagation(); pop.classList.remove('active'); });
+            document.addEventListener('click', function (e) {
+                if (!btn.contains(e.target) && !pop.contains(e.target)) pop.classList.remove('active');
+            });
         })();
     </script>
 </body>
